@@ -1,7 +1,7 @@
 class CreateRequests < ActiveRecord::Migration[5.2]
   def change
     create_table :requests do |t|
-      t.string :type
+      t.string :specialty
       t.text :content
       t.references :client
       t.references :advisor

@@ -10,11 +10,11 @@ class User < ApplicationRecord
 
   ROLES = %w[client advisor]
 
-  validates :first_name, :last_name, :role, presence: true
-  validates :role, inclusion: { in: ROLES }
-  validates :bio, :response_time, :avatar, presence: true, if: -> { role == 'advisor' }
-  validates :monthly_income, presence: true, if: -> { role == 'client' }
-  validate :must_have_a_specialty, if: -> { role == 'advisor' }
+  # validates :first_name, :last_name, :role, presence: true
+  # validates :role, inclusion: { in: ROLES }
+  # validates :bio, :response_time, :avatar, presence: true, if: -> { role == 'advisor' }
+  # validates :monthly_income, presence: true, if: -> { role == 'client' }
+  # validate :must_have_a_specialty, if: -> { role == 'advisor' }
 
   def must_have_a_specialty
     unless budgeting || saving || bill_paying
