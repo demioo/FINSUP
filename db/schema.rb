@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_27_113345) do
+ActiveRecord::Schema.define(version: 2019_08_27_124432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 2019_08_27_113345) do
     t.datetime "updated_at", null: false
     t.index ["advisor_id"], name: "index_responses_on_advisor_id"
     t.index ["request_id"], name: "index_responses_on_request_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "content"
+    t.bigint "client_id"
+    t.bigint "request_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_reviews_on_client_id"
+    t.index ["request_id"], name: "index_reviews_on_request_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,4 +72,5 @@ ActiveRecord::Schema.define(version: 2019_08_27_113345) do
   add_foreign_key "requests", "users", column: "advisor_id"
   add_foreign_key "requests", "users", column: "client_id"
   add_foreign_key "responses", "users", column: "advisor_id"
+  add_foreign_key "reviews", "users", column: "client_id"
 end
