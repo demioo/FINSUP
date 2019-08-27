@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2019_08_27_144537) do
   enable_extension "plpgsql"
 
   create_table "requests", force: :cascade do |t|
-    t.string "type"
+    t.string "specialty"
     t.text "content"
     t.bigint "client_id"
     t.bigint "advisor_id"
