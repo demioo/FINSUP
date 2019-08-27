@@ -9,10 +9,7 @@ class User < ApplicationRecord
   has_many :sent_responses, class_name: 'Response', foreign_key: 'advisor_id'
 
   def received_reviews
-    reviews = []
-    received_requests.each do |r|
-      reviews << r.reviews
-    end
-    return reviews.flatten
+    received_requests.map(&:review)
+    # Review.joins(:request).where(requests: { advisor_id: id })
   end
 end
