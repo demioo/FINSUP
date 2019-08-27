@@ -25,6 +25,7 @@ class RequestsController < ApplicationController
   end
 
   def last_step
+    @advisors = User.where(role: "advisor")
     if !@request.update(request_params)
       render :continue_request
     end
@@ -57,6 +58,6 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:request).permit(:specialty, :content, :client_id, :advisor_id)
+    params.require(:request).permit(:specialty, :content, :client, :advisor, :client_id, :advisor_id)
   end
 end

@@ -1,0 +1,3 @@
+<% @advisors.each do |advisor| %>
+<%= link_to advisor.email ,user_path(advisor, request: @request) %>
+<% end %>
