@@ -28,8 +28,12 @@ ActiveRecord::Schema.define(version: 2019_08_27_113345) do
 
   create_table "responses", force: :cascade do |t|
     t.text "content"
+    t.bigint "request_id"
+    t.bigint "advisor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["advisor_id"], name: "index_responses_on_advisor_id"
+    t.index ["request_id"], name: "index_responses_on_request_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -56,4 +60,5 @@ ActiveRecord::Schema.define(version: 2019_08_27_113345) do
 
   add_foreign_key "requests", "users", column: "advisor_id"
   add_foreign_key "requests", "users", column: "client_id"
+  add_foreign_key "responses", "users", column: "advisor_id"
 end
