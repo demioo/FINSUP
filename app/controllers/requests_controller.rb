@@ -34,8 +34,13 @@ class RequestsController < ApplicationController
     elsif @request.errors.messages.dig(:advisor)
       flash[:alert] = "Please select an advisor"
       redirect_to advisors_users_path
+    elsif @request.errors.messages.dig(:content)
+      flash[:alert] = "Please fill the content"
+      redirect_to content_requests_path
+    elsif @request.errors.messages.dig(:specialty)
+      flash[:alert] = "Please choose a specialty"
+      redirect_to new_request_path
     end
-    # raise
   end
 
   private
