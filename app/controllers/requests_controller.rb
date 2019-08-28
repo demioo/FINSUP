@@ -1,61 +1,49 @@
 class RequestsController < ApplicationController
-  before_action :find_request, only: %i[show edit update last_step destroy continue_request]
   def index
     @requests = policy_scope(Request)
   end
 
   def new
-    @request = Request.new
-    authorize @request
+    skip_authorization
+    session[:request] = {}
+  end
+
+  def specialty
+    skip_authorization
+    session[:request][:specialty] = params[:specialty][:specialty]
+    redirect_to content_requests_path
+  end
+
+  def content
+    skip_authorization
+  end
+
+  def set_content
+    skip_authorization
+    session[:request][:content] = params[:content][:content]
+    redirect_to advisors_users_path
   end
 
   def create
-    @request = Request.new(request_params)
+    session[:request][:advisor_id] = params[:request][:advisor_id]
+    @request = Request.new(session[:request])
     @request.client = current_user
     authorize @request
     if @request.save
-      redirect_to continue_request_path(@request)
-    else
-      render :new
-    end
-  end
-
-  def continue_request
-  end
-
-  def last_step
-    @advisors = User.where(role: "advisor")
-    if !@request.update(request_params)
-      render :continue_request
-    end
-  end
-
-  def show
-  end
-
-  def edit
-  end
-
-  def update
-
-    if @request.update(request_params)
       redirect_to requests_path
-    else
-      render :edit
+    elsif @request.errors.messages.dig(:advisor)
+      flash[:alert] = "Please select an advisor"
+      redirect_to advisors_users_path
+    elsif @request.errors.messages.dig(:content)
+      flash[:alert] = "Please fill the content"
+      redirect_to content_requests_path
+    elsif @request.errors.messages.dig(:specialty)
+      flash[:alert] = "Please choose a specialty"
+      redirect_to new_request_path
     end
-  end
-
-  def destroy
-    @request.destroy
-    redirect_to requests_path
   end
 
   private
-
-  def find_request
-    @request = Request.find(params[:id])
-    authorize @request
-  end
 
   def request_params
     params.require(:request).permit(:specialty, :content, :client, :advisor_id)

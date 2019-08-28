@@ -1,7 +1,9 @@
 <h1>What's your goal?</h1>
-
-<div><%= link_to "Budgeting", requests_path(request: { specialty: "budgeting"}), method: :post %></div>
-
- <div> <%= link_to "Saving", requests_path(request: { specialty: "saving"}), method: :post %></div>
-
- <div><%= link_to "Bill Paying", requests_path(request: { specialty: "bill paying"}), method: :post %></div>
+<% Request::TYPES.each do |type| %>
+  <%= simple_form_for :specialty, url: specialty_requests_path, html: { id: 'specialty_form' }, method: :post do |f| %>
+    <%= f.input :specialty, as: :hidden, input_html: { value: type } %>
+    <%= f.button :button, type: :submit do %>
+      <p><%= type %></p>
+    <% end %>
+  <% end %>
+<% end %>
