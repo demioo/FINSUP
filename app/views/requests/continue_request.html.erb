@@ -1,4 +1,4 @@
-<%= simple_form_for :request, url: last_step_path(@request), method: :post do |f| %>
+<%= simple_form_for :request, url: middle_update_path(@request), method: :post do |f| %>
   <%= f.input :content %>
   <%= f.submit 'submit' %>
 <% end %>

@@ -21,6 +21,10 @@ class RequestPolicy < ApplicationPolicy
     record.client == user
   end
 
+  def middle_update?
+    continue_request?
+  end
+
   def last_step?
     continue_request?
   end

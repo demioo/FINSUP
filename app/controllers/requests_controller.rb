@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :find_request, only: %i[show edit update last_step destroy continue_request]
+  before_action :find_request, only: %i[show edit update middle_update last_step destroy continue_request]
   def index
     @requests = policy_scope(Request)
   end
@@ -23,11 +23,19 @@ class RequestsController < ApplicationController
   def continue_request
   end
 
-  def last_step
-    @advisors = User.where(role: "advisor")
-    if !@request.update(request_params)
+  def middle_update
+    if @request.update(request_params)
+      redirect_to last_step_path(@request)
+    else
       render :continue_request
     end
+  end
+
+  def last_step
+    @advisors = User.where(role: "advisor") # specialty: session[:specialty]
+    # if !@request.update(request_params)
+    #   render :continue_request
+    # end
   end
 
   def show
@@ -37,7 +45,6 @@ class RequestsController < ApplicationController
   end
 
   def update
-
     if @request.update(request_params)
       redirect_to requests_path
     else
