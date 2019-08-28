@@ -1,3 +1,7 @@
 <h1>What's your goal?</h1>
 
-<%= link_to "Budgeting", requests_path(request: { specialty: "budgeting"}), method: :post %>
+<div><%= link_to "Budgeting", requests_path(request: { specialty: "budgeting"}), method: :post %></div>
+
+ <div> <%= link_to "Saving", requests_path(request: { specialty: "saving"}), method: :post %></div>
+
+ <div><%= link_to "Bill Paying", requests_path(request: { specialty: "bill paying"}), method: :post %></div>
