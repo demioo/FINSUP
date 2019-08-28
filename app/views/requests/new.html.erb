@@ -1,7 +1,7 @@
 <h1>What's your goal?</h1>
-<ul>
-  <li><%= link_to "Budgeting", requests_path(request: { specialty: "budgeting"}), method: :post %>
-  </li>
-  <li> <%= link_to "Saving", requests_path(request: { specialty: "saving"}), method: :post %> </li>
-  <li><%= link_to "bill paying", requests_path(request: { specialty: "bill paying"}), method: :post %> </li>
-</ul>
+
+<div><%= link_to "Budgeting", requests_path(request: { specialty: "budgeting"}), method: :post %></div>
+
+ <div> <%= link_to "Saving", requests_path(request: { specialty: "saving"}), method: :post %></div>
+
+ <div><%= link_to "Bill Paying", requests_path(request: { specialty: "bill paying"}), method: :post %></div>
