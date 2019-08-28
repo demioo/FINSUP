@@ -1,0 +1,8 @@
+<h1>advisor show</h1>
+<p><%= @advisor.first_name %></p>
+<%= simple_form_for @request, method: :post do |f| %>
+  <%= f.input :advisor_id, as: :hidden, input_html: { value: @advisor.id }  %>
+  <%= f.submit 'book' %>
+<% end %>
+
+<%= link_to 'back to advisors', advisors_users_path %>

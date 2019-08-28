@@ -8,4 +8,12 @@ class UserPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def advisors?
+    true
+  end
+
+  def show_advisor?
+    true
+  end
 end
