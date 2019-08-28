@@ -1,0 +1,4 @@
+<h1>advisors</h1>
+<% @advisors.each do |advisor| %>
+  <%= link_to advisor.first_name, show_advisor_user_path(advisor) %>
+<% end %>

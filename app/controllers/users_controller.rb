@@ -4,4 +4,15 @@ class UsersController < ApplicationController
     @request = Request.find(params[:request])
     authorize @user
   end
+
+  def advisors
+    @advisors = policy_scope(User).where(role: 'advisor')
+    authorize @advisors
+  end
+
+  def show_advisor
+    @request = Request.new
+    @advisor = User.find(params[:id])
+    authorize @advisor
+  end
 end
