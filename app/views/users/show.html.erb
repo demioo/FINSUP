@@ -1,9 +1,7 @@
-<h1><%= @user.email %></h1>
+<h1>Show page of one advisor</h1>
 
-<% if @request %>
-  <%= simple_form_for(@request) do |f| %>
-    <%= f.input :advisor_id, input_html: { value: @user.id }, as: :hidden %>
-    <%= f.submit %>
-  <% end %>
 
+<%= simple_form_for :request, url: request_path(@request), method: :patch do |f| %>
+  <%= f.input :advisor_id, as: :hidden, input_html: { value: @user.id }  %>
+  <%= f.submit %>
 <% end %>

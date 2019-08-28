@@ -1,5 +1,4 @@
 class RequestsController < ApplicationController
-
   before_action :find_request, only: %i[show edit update last_step destroy continue_request]
   def index
     @requests = policy_scope(Request)
@@ -38,6 +37,7 @@ class RequestsController < ApplicationController
   end
 
   def update
+
     if @request.update(request_params)
       redirect_to requests_path
     else
@@ -58,6 +58,6 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:request).permit(:specialty, :content, :client, :advisor, :client_id, :advisor_id)
+    params.require(:request).permit(:specialty, :content, :client, :advisor_id)
   end
 end
