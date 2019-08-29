@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize_pundit
+  before_action :authorisations
   skip_before_action :authenticate_user!
 
   def advisors
@@ -12,6 +12,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def authorisations
+    current_user.nil? ? skip_authorization : authorize_pundit
+  end
 
   def authorize_pundit
     authorize User.new

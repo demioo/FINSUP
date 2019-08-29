@@ -5,12 +5,12 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
-  before_action :reject_advisors, only: %i[advisors? show_advisor?]
-
   def advisors?
+    reject_advisors
   end
 
   def show_advisor?
+    reject_advisors
   end
 
   private

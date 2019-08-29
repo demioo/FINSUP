@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :authorize_pundit, only: %i[specialty content set_content]
+  before_action :authorisations, only: %i[new specialty content set_content]
   skip_before_action :authenticate_user!, except: %i[index dashboard_advisor unanswered create]
 
   def index
@@ -7,17 +7,18 @@ class RequestsController < ApplicationController
   end
 
   def dashboard_advisor
-    @requests = policy_scope(Request).where(advisor: current_user)
+    @requests = policy_scope(Request)
     authorize @requests
+    @requests = policy_scope(Request).where(advisor: current_user)
   end
 
   def unanswered
-    @requests = policy_scope(Request).where(advisor: current_user)
+    @requests = policy_scope(Request)
     authorize @requests
+    @requests = policy_scope(Request).where(advisor: current_user)
   end
 
   def new
-    authorize_pundit if current_user.nil?
     session[:request] = {}
   end
 
@@ -54,6 +55,10 @@ class RequestsController < ApplicationController
   end
 
   private
+
+  def authorisations
+    current_user.nil? ? skip_authorization : authorize_pundit
+  end
 
   def authorize_pundit
     authorize Request.new
