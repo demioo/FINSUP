@@ -6,6 +6,6 @@ class Request < ApplicationRecord
 
   TYPES = ['budgeting', 'saving', 'bill paying']
   validates :client, presence: true
-  validates :content, presence: true, on: :update
+  validates :content, presence: true
   validates :specialty, inclusion: { in: TYPES }
 end
