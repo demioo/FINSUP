@@ -1,25 +1,22 @@
 class RequestsController < ApplicationController
+  before_action :authorize_pundit, only: %i[new specialty content set_content]
   def index
     @requests = policy_scope(Request)
   end
 
   def new
-    skip_authorization
     session[:request] = {}
   end
 
   def specialty
-    skip_authorization
     session[:request][:specialty] = params[:specialty][:specialty]
     redirect_to content_requests_path
   end
 
   def content
-    skip_authorization
   end
 
   def set_content
-    skip_authorization
     session[:request][:content] = params[:content][:content]
     redirect_to advisors_users_path
   end
@@ -45,7 +42,7 @@ class RequestsController < ApplicationController
 
   private
 
-  def request_params
-    params.require(:request).permit(:specialty, :content, :client, :advisor_id)
+  def authorize_pundit
+    authorize Request.new
   end
 end

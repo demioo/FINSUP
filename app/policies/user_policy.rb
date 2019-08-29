@@ -5,15 +5,17 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
-  def show?
-    true
-  end
+  before_action :reject_advisors, only: %i[advisors? show_advisor?]
 
   def advisors?
-    true
   end
 
   def show_advisor?
-    true
+  end
+
+  private
+
+  def reject_advisors
+    user.role != 'advisor'
   end
 end

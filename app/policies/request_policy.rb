@@ -5,31 +5,27 @@ class RequestPolicy < ApplicationPolicy
     end
   end
 
-  def show?
-    true
-  end
+  before_action :reject_advisors
 
   def new?
-    !user.nil?
+  end
+
+  def specialty?
+  end
+
+  def content?
+  end
+
+  def set_content?
   end
 
   def create?
-    new?
+    record.user == user
   end
 
-  def continue_request?
-    record.client == user
-  end
+  private
 
-  def middle_update?
-    continue_request?
-  end
-
-  def last_step?
-    continue_request?
-  end
-
-  def update?
-    continue_request?
+  def reject_advisors
+    user.role != 'advisor'
   end
 end
