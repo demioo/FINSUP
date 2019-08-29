@@ -19,12 +19,13 @@ class RequestsController < ApplicationController
   end
 
   def new
-    session[:request] = {}
+    skip_authorization
+    session[:request] = {} unless !session[:request]['content'].nil? || !session[:request]['advisor_id'].nil?
   end
 
   def specialty
     session[:request][:specialty] = params[:specialty][:specialty]
-    redirect_to content_requests_path
+    specialty_test
   end
 
   def content
@@ -32,29 +33,62 @@ class RequestsController < ApplicationController
 
   def set_content
     session[:request][:content] = params[:content][:content]
-    redirect_to advisors_users_path
+    set_content_test
   end
 
   def create
-    session[:request][:advisor_id] = params[:request][:advisor_id]
+    session[:request][:advisor_id] = params[:request][:advisor_id] unless params[:request].nil?
     @request = Request.new(session[:request])
     @request.client = current_user
     authorize @request
-    if @request.save
-      redirect_to requests_path
-    elsif @request.errors.messages.dig(:advisor)
-      flash[:alert] = "Please select an advisor"
-      redirect_to advisors_users_path
-    elsif @request.errors.messages.dig(:content)
-      flash[:alert] = "Please fill the content"
-      redirect_to content_requests_path
-    elsif @request.errors.messages.dig(:specialty)
-      flash[:alert] = "Please choose a specialty"
-      redirect_to new_request_path
-    end
+    error_check
   end
 
   private
+
+  def check_after_specialty
+    if session[:request]['content'].nil?
+      redirect_to content_requests_path
+    elsif !session[:request]['content'].empty? && !session[:request]['advisor_id'].nil?
+      redirect_to completed_requests_path
+    elsif session[:request]['content'].empty?
+      redirect_to content_requests_path
+    elsif session[:request]['advisor_id'].nil?
+      redirect_to set_content_requests_path
+    end
+  end
+
+  def specialty_test
+    if session[:request]['content'].nil? && session[:request]['advisor_id'].nil?
+      redirect_to content_requests_path
+    else
+      check_after_specialty
+    end
+  end
+
+  def set_content_test
+    if !session[:request]['advisor_id'].nil?
+      redirect_to completed_requests_path
+    else
+      redirect_to advisors_users_path
+    end
+  end
+
+  def error_check
+    if @request.save
+      redirect_to requests_path
+      session[:request] = {}
+    elsif @request.specialty.nil?
+      flash[:alert] = "Please choose a specialty"
+      redirect_to new_request_path
+    elsif @request.content.nil? || @request.content.empty?
+      flash[:alert] = "Please fill the content"
+      redirect_to content_requests_path
+    elsif @request.advisor.nil?
+      flash[:alert] = "Please choose an advisor"
+      redirect_to advisors_users_path
+    end
+  end
 
   def authorisations
     current_user.nil? ? skip_authorization : authorize_pundit
