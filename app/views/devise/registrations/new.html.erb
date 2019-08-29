@@ -23,6 +23,7 @@
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :role,
                  required: true,
+                 collection: %w[client advisor],
                  autofocus: true %>
 
   </div>
