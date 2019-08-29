@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :authenticate_user!
   def show
     @user = User.find(params[:id])
     @request = Request.find(params[:request])
@@ -6,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def advisors
+
     @advisors = policy_scope(User).where(role: 'advisor')
     authorize @advisors
   end

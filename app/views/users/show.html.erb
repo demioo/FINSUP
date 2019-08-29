@@ -9,7 +9,6 @@
           <%= f.input :advisor_id, as: :hidden, input_html: { value: @user.id }  %>
           <%= f.submit %>
         <% end %>
-
         <%= link_to 'Back to advisors', last_step_path(@request) %>
     </div>
   </div>
