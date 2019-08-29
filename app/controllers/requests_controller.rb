@@ -1,5 +1,7 @@
 class RequestsController < ApplicationController
   before_action :authorize_pundit, only: %i[new specialty content set_content]
+  skip_before_action :authenticate_user!, except: %i[index create]
+
   def index
     @requests = policy_scope(Request)
   end

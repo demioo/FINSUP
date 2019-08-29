@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authorize_pundit, only: %i[advisors show_advisor]
+  skip_before_action :authenticate_user!
 
   def advisors
     @advisors = policy_scope(User).where(role: 'advisor')
