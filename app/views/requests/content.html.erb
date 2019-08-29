@@ -1,4 +1,36 @@
-<%= simple_form_for :content, url: set_content_requests_path, method: :post do |f| %>
-  <%= f.input :content %>
-  <%= f.submit 'submit' %>
+
+<% if session[:request]['specialty'] == 'budgeting' %>
+
+  <%= simple_form_for :content, url: set_content_requests_path, method: :post do |f| %>
+    <%= f.input :monthly_income, label: "What is your monthly income?" %>
+    <%= f.input :paycheck_frequency, collection: %w[Weekly Bi-Weekly Monthly] %>
+    <%= f.input :fixed_expenses, label: "What are your fixed expenses?" %>
+    <%= f.input :household_size, label: "Household size?" %>
+    <%= f.input :content, label: "What are you willing to change?" %>
+    <%= f.submit 'submit' %>
+  <% end %>
+
+<% elsif session[:request]['specialty'] == 'bill paying' %>
+  <%= simple_form_for :content, url: set_content_requests_path, method: :post do |f| %>
+    <%= f.input :monthly_income, label: "What is your monthly income?" %>
+    <%= f.input :paycheck_frequency, collection: %w[Weekly Bi-Weekly Monthly] %>
+    <%= f.input :fixed_expenses, label: "What are your fixed expenses?" %>
+    <%= f.input :due_dates, label: "What are the due dates of your bills?" %>
+    <%= f.input :content, label: "What are you willing to change?" %>
+    <%= f.submit 'submit' %>
+  <% end %>
+
+
+<% elsif session[:request]['specialty'] == 'saving' %>
+  <%= simple_form_for :content, url: set_content_requests_path, method: :post do |f| %>
+    <%= f.input :monthly_income, label: "What is your monthly income?" %>
+    <%= f.input :fixed_expenses, label: "What are your fixed expenses?" %>
+    <%= f.input :savings_goal, label: "What are your savings goals? (ex. £1000, 2 months' salary)" %>
+    <%= f.input :bank_account, label: "Do you have a bank account?", collection: %w[Yes No] %>
+    <%= f.input :content, label:  "What are you willing to change?" %>
+    <%= f.submit 'submit' %>
+  <% end %>
+
+<% else %>
+  <%= < link_to 'Start now', new_request_path %>
 <% end %>
