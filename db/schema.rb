@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_27_144537) do
+ActiveRecord::Schema.define(version: 2019_08_29_154220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 2019_08_27_144537) do
     t.bigint "advisor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "monthly_income"
+    t.text "fixed_expenses"
+    t.integer "household_size"
+    t.string "paycheck_frequency"
+    t.text "savings_goal"
+    t.text "due_dates"
+    t.string "bank_account"
     t.index ["advisor_id"], name: "index_requests_on_advisor_id"
     t.index ["client_id"], name: "index_requests_on_client_id"
   end
@@ -29,11 +36,11 @@ ActiveRecord::Schema.define(version: 2019_08_27_144537) do
   create_table "responses", force: :cascade do |t|
     t.text "content"
     t.bigint "request_id"
-    t.bigint "advisor_id"
+    t.bigint "sender_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["advisor_id"], name: "index_responses_on_advisor_id"
     t.index ["request_id"], name: "index_responses_on_request_id"
+    t.index ["sender_id"], name: "index_responses_on_sender_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -71,6 +78,6 @@ ActiveRecord::Schema.define(version: 2019_08_27_144537) do
 
   add_foreign_key "requests", "users", column: "advisor_id"
   add_foreign_key "requests", "users", column: "client_id"
-  add_foreign_key "responses", "users", column: "advisor_id"
+  add_foreign_key "responses", "users", column: "sender_id"
   add_foreign_key "reviews", "users", column: "client_id"
 end
