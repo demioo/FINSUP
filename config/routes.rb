@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :requests, only: [:new, :index, :create] do
     collection do
+      get 'dashboard_advisor'
+      get 'unanswered'
       post 'specialty'
       get 'content'
       post 'set_content'

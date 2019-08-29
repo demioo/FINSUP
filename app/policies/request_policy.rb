@@ -5,25 +5,39 @@ class RequestPolicy < ApplicationPolicy
     end
   end
 
-  before_action :reject_advisors
+  def dashboard_advisor?
+    accept_advisor
+  end
+
+  def unanswered?
+    accept_advisor
+  end
 
   def new?
+    reject_advisors
   end
 
   def specialty?
+    reject_advisors
   end
 
   def content?
+    reject_advisors
   end
 
   def set_content?
+    reject_advisors
   end
 
   def create?
-    record.user == user
+    record.client == user
   end
 
   private
+
+  def accept_advisor
+    record[0].advisor == user
+  end
 
   def reject_advisors
     user.role != 'advisor'

@@ -1,5 +1,6 @@
 <h1>Dashboard</h1>
 
 <% @requests.each do |r| %>
-  <h1><%= r.advisor.email %></h1>
+  <p><%= r.advisor.first_name %> <%= r.advisor.last_name %> </p>
+  <p>This should be a card with request details. If you click it you go to the chat with advisor</p>
 <% end %>

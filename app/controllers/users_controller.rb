@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize_pundit, only: %i[advisors show_advisor]
+  before_action :authorize_pundit
   skip_before_action :authenticate_user!
 
   def advisors
