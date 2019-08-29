@@ -1,5 +1,14 @@
-<h1>Dashboard</h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-6">
+      <div class="dashboard-background">
+        <h1>Dashboard</h1>
 
-<% @requests.each do |r| %>
-  <h1><%= r.advisor.email %></h1>
-<% end %>
+        <% @requests.each do |r| %>
+          <h1><%= r.advisor.email %></h1>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

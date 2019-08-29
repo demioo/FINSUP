@@ -1,4 +1,13 @@
-<%= simple_form_for :content, url: set_content_requests_path, method: :post do |f| %>
-  <%= f.input :content %>
-  <%= f.submit 'submit' %>
-<% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-6">
+      <div class="billpay-form-background">
+        <%= simple_form_for :content, url: set_content_requests_path, method: :post do |f| %>
+          <%= f.input :content %>
+          <%= f.submit 'submit' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

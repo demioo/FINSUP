@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-lg-6">
-      <div class="form_index">
+      <div class="form-index-background">
         <h1>What's your goal?</h1>
-        <% Request::TYPES.each do |type| %>
-          <%= simple_form_for :specialty, url: specialty_requests_path, html: { id: 'specialty_form' }, method: :post do |f| %>
-            <%= f.input :specialty, as: :hidden, input_html: { value: type } %>
-            <%= f.button :button, type: :submit do %>
-              <p><%= type %></p>
-            <% end %>
+          <% Request::TYPES.each do |type| %>
+          <div>
+            <%= simple_form_for :specialty, url: specialty_requests_path, html: { id: 'specialty_form' }, method: :post, class: 'button-links' do |f| %>
+              <%= f.input :specialty, as: :hidden, input_html: { value: type } %>
+              <%= f.submit type, class: 'button-links' %>
+            </div>
           <% end %>
         <% end %>
       </div>

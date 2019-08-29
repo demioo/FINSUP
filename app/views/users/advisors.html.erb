@@ -1,4 +1,12 @@
-<h1>advisors</h1>
-<% @advisors.each do |advisor| %>
-  <%= link_to advisor.first_name, show_advisor_user_path(advisor) %>
-<% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-6">
+      <div class="advisor-index-background">
+        <h1>Advisors</h1>
+          <% @advisors.each do |advisor| %>
+          <%= link_to advisor.first_name, show_advisor_user_path(advisor) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
