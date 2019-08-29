@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       post 'specialty'
       get 'content'
       post 'set_content'
+      get 'completed', to: 'requests#create'
     end
   end
 end
