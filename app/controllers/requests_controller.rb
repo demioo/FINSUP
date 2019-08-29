@@ -1,7 +1,21 @@
 class RequestsController < ApplicationController
-  skip_before_action :authenticate_user!, except: [:index, :create]
+  before_action :authorisations, only: %i[new specialty content set_content]
+  skip_before_action :authenticate_user!, except: %i[index dashboard_advisor unanswered create]
+
   def index
+    @requests = policy_scope(Request).where(client: current_user)
+  end
+
+  def dashboard_advisor
     @requests = policy_scope(Request)
+    authorize @requests
+    @requests = policy_scope(Request).where(advisor: current_user)
+  end
+
+  def unanswered
+    @requests = policy_scope(Request)
+    authorize @requests
+    @requests = policy_scope(Request).where(advisor: current_user)
   end
 
   def new
@@ -10,17 +24,14 @@ class RequestsController < ApplicationController
   end
 
   def specialty
-    skip_authorization
     session[:request][:specialty] = params[:specialty][:specialty]
     specialty_test
   end
 
   def content
-    skip_authorization
   end
 
   def set_content
-    skip_authorization
     session[:request][:content] = params[:content][:content]
     set_content_test
   end
@@ -79,7 +90,11 @@ class RequestsController < ApplicationController
     end
   end
 
-  def request_params
-    params.require(:request).permit(:specialty, :content, :client, :advisor_id)
+  def authorisations
+    current_user.nil? ? skip_authorization : authorize_pundit
+  end
+
+  def authorize_pundit
+    authorize Request.new
   end
 end

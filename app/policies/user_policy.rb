@@ -5,15 +5,17 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
-  def show?
-    true
-  end
-
   def advisors?
-    true
+    reject_advisors
   end
 
   def show_advisor?
-    true
+    reject_advisors
+  end
+
+  private
+
+  def reject_advisors
+    user.role != 'advisor'
   end
 end

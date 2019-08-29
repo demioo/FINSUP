@@ -1,8 +1,16 @@
-<h1>advisor show</h1>
-<p><%= @advisor.first_name %></p>
-<%= simple_form_for @request, method: :post do |f| %>
-  <%= f.input :advisor_id, as: :hidden, input_html: { value: @advisor.id }  %>
-  <%= f.submit 'book' %>
-<% end %>
+<h1>Show page of one advisor</h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-6">
+      <div class="advisor-show-background">
+      </div>
+        <p><%= @advisor.first_name %></p>
+        <%= simple_form_for @request, method: :post do |f| %>
+          <%= f.input :advisor_id, as: :hidden, input_html: { value: @advisor.id }  %>
+          <%= f.submit 'book' %>
+        <% end %>
 
-<%= link_to 'back to advisors', advisors_users_path %>
+        <%= link_to 'back to advisors', advisors_users_path %>
+    </div>
+  </div>
+</div>

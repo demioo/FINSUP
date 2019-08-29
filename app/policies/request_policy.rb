@@ -5,31 +5,41 @@ class RequestPolicy < ApplicationPolicy
     end
   end
 
-  def show?
-    true
+  def dashboard_advisor?
+    accept_advisor
+  end
+
+  def unanswered?
+    accept_advisor
   end
 
   def new?
-    !user.nil?
+    reject_advisors
+  end
+
+  def specialty?
+    reject_advisors
+  end
+
+  def content?
+    reject_advisors
+  end
+
+  def set_content?
+    reject_advisors
   end
 
   def create?
-    new?
-  end
-
-  def continue_request?
     record.client == user
   end
 
-  def middle_update?
-    continue_request?
+  private
+
+  def accept_advisor
+    record[0].advisor == user
   end
 
-  def last_step?
-    continue_request?
-  end
-
-  def update?
-    continue_request?
+  def reject_advisors
+    user.role != 'advisor'
   end
 end
