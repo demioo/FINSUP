@@ -2,15 +2,13 @@
   <div class="advisor-index-background">
     <h1>Advisors</h1>
       <% @advisors.each do |advisor| %>
-        <%= link_to advisor.first_name, show_advisor_user_path(advisor) %>
         <div class="card-trip">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-          <div class="card-trip-infos">
+
+          <div class="card-trip-infos margin-bottom">
             <div>
-              <h2>Lotta Money</h2>
-              <p>I'm here to help!</p>
+              <h3><%= link_to advisor.first_name.capitalize, show_advisor_user_path(advisor) %></h3>
+              <h5><%= advisor.bio unless advisor.bio.nil? || advisor.bio.empty? %></h5>
             </div>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
           </div>
         </div>
       <% end %>
