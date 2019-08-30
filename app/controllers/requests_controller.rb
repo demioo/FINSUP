@@ -20,7 +20,7 @@ class RequestsController < ApplicationController
 
   def new
     skip_authorization
-    session[:request] = {} unless !session[:request]['content'].nil? || !session[:request]['advisor_id'].nil?
+    session[:request] = {} if session[:request].nil?
   end
 
   def specialty
