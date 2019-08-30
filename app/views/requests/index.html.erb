@@ -1,10 +1,16 @@
 <div class="background-container">
   <div class="dashboard-background">
     <h1>Dashboard</h1>
-
-    <% @requests.each do |r| %>
-      <p><%= r.advisor.first_name %> <%= r.advisor.last_name %> </p>
-      <p>This should be a card with request details. If you click it you go to the chat with advisor</p>
-    <% end %>
+    <div class="index-container">
+      <% @requests.each do |r| %>
+      <div class="card card-requests">
+        <h4 class="card-header">Advisor: <%= r.advisor.first_name.capitalize %> <%= r.advisor.last_name.capitalize unless r.advisor.last_name.nil? %> </h4>
+        <div class="dashboard-content">
+          <p><strong>What you are willing to change:</strong></p>
+          <p><%= r.content unless r.content.nil? %></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
   </div>
 </div>
