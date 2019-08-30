@@ -1,0 +1,20 @@
+<% @request.responses.each do |response| %>
+  <% if response.sender.role == 'advisor' %>
+   <div class="d-flex">
+     <div class="advisor-message">
+       <%= response.content %>
+     </div>
+   </div>
+  <% else %>
+   <div class="d-flex justify-content-end">
+     <div class ="client-message">
+       <%= response.content %>
+     </div>
+   </div>
+  <% end %>
+<% end %>
+
+
+<%= simple_form_for :response, url: request_responses_path(@request), method: :post do |f| %>
+  <%= f.input :content, label: false, placeholder: 'Type here' %>
+<% end %>
