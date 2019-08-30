@@ -13,6 +13,10 @@ class RequestPolicy < ApplicationPolicy
     accept_advisor
   end
 
+  def chat?
+    record.client == user || record.advisor == user
+  end
+
   def new?
     reject_advisors
   end

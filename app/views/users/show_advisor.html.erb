@@ -1,12 +1,25 @@
-<div class="background-container">
-  <div class="advisor-show-background">
-    <h1>Show page of one advisor</h1>
-    <p><%= @advisor.first_name %></p>
-    <%= simple_form_for @request, method: :post do |f| %>
-      <%= f.input :advisor_id, as: :hidden, input_html: { value: @advisor.id }  %>
-      <%= f.submit 'book' %>
-    <% end %>
+<h1>Your selected advisor</h1>
+  <div class="background-container">
+    <div class="advisor-show-background">
+      <p><%= @advisor.first_name %></p>
+      <%= simple_form_for @request, method: :post do |f| %>
+        <div class="card-trip">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+            <div class="card-trip-infos">
+              <div>
+                <h2>Lotta Money</h2>
+                <p>I'm here to help!  Click my link to start a chat.  Lets's fix your finances.</p>
+              </div>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+            </div>
+            <%= f.input :advisor_id, as: :hidden, input_html: { value: @advisor.id }  %>
+            <%= f.submit 'book me!', class: "btn btn-danger btn-md" %> 
+        </div>
+        <% end %>
+        <%= link_to 'back to advisors', advisors_users_path %>
+      </div>
+   </div>
 
-    <%= link_to 'back to advisors', advisors_users_path %>
-  </div>
-</div>
+
+
+
