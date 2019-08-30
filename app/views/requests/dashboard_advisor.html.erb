@@ -3,15 +3,16 @@
     <div class="col-12 col-lg-6">
       <div class="dashboard-background">
         <% @requests.each do |request| %>
-          <% if request.response != nil %>
+          <% if request.responses.size > 0 %>
             <p><%= request.client.first_name %> <%= request.client.last_name %></p>
             <p>This should be a card with request details. If you click it you go to the chat with the client</p>
-            <%= link_to 'Chat', '#' %>
+            <%= link_to 'Chat', chat_request_path(request) %>
           <% end %>
         <% end %>
-          <%= link_to 'See new requests', unanswered_requests_path %>
+        <%= link_to 'See new requests', unanswered_requests_path %>
       </div>
     </div>
   </div>
 </div>
+
 
