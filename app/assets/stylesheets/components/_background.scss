@@ -2,13 +2,13 @@
   background-image: asset-url('homepage.png');
   background-size: cover;
   background-position: center;
-  width: 100vw;
+  width: 100%;
   height: 667px;
   position: relative;
   opacity: 0.5;
 }
 
-.container {
+.background-container {
   padding: 0;
 }
 
@@ -16,7 +16,7 @@
   background-image: asset-url('form_index.png');
   background-size: cover;
   background-position: center;
-  width: 100vw;
+  width: 100%;
   height: 667px;
   position: relative;
   opacity: 0.5;
@@ -26,7 +26,7 @@
   background-image: asset-url('advisor_show.png');
   background-size: cover;
   background-position: center;
-  width: 100vw;
+  width: 100%;
   height: 667px;
   position: relative;
   opacity: 0.5;
@@ -35,7 +35,7 @@
   background-image: asset-url('advisor_index.png');
   background-size: cover;
   background-position: center;
-  width: 100vw;
+  width: 100%;
   height: 667px;
   position: relative;
   opacity: 0.5;
@@ -45,7 +45,7 @@
   background-image: asset-url('billPayment.png');
   background-size: cover;
   background-position: center;
-  width: 100vw;
+  width: 100%;
   height: 667px;
   position: relative;
   opacity: 0.5;
@@ -55,7 +55,7 @@
   background-image: asset-url('budget.png');
   background-size: cover;
   background-position: center;
-  width: 100vw;
+  width: 100%;
   height: 667px;
   position: relative;
   opacity: 0.5;
@@ -65,7 +65,7 @@
   background-image: asset-url('chat_page.png');
   background-size: cover;
   background-position: center;
-  width: 100vw;
+  width: 100%;
   height: 667px;
   position: relative;
   opacity: 0.5;
@@ -75,7 +75,7 @@
   background-image: asset-url('dashboard.png');
   background-size: cover;
   background-position: center;
-  width: 100vw;
+  width: 100%;
   height: 667px;
   position: relative;
   opacity: 0.5;
@@ -85,7 +85,7 @@
   background-image: asset-url('savings.png');
   background-size: cover;
   background-position: center;
-  width: 100vw;
+  width: 100%;
   height: 667px;
   position: relative;
   opacity: 0.5;
