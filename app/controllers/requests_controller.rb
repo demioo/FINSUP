@@ -76,8 +76,8 @@ class RequestsController < ApplicationController
 
   def error_check
     if @request.save
-      session[:request] = {}
       redirect_to requests_path
+      session[:request] = {}
     elsif @request.specialty.nil?
       flash[:alert] = "Please choose a specialty"
       redirect_to new_request_path
