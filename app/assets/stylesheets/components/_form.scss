@@ -5,6 +5,14 @@
 
 }
 
+.form-fillout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+}
+
 .signup-inputs {
   min-width: 70%;
 }
