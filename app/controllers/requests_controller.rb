@@ -20,7 +20,7 @@ class RequestsController < ApplicationController
 
   def new
     skip_authorization
-    session[:request] = {} if session[:request].nil?
+    session[:request] = {}
   end
 
   def specialty
@@ -76,8 +76,8 @@ class RequestsController < ApplicationController
 
   def error_check
     if @request.save
-      redirect_to requests_path
       session[:request] = {}
+      redirect_to requests_path
     elsif @request.specialty.nil?
       flash[:alert] = "Please choose a specialty"
       redirect_to new_request_path
