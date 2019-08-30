@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :requests, only: [:new, :index, :create] do
+    resources :responses, only: [:create]
     collection do
       get 'dashboard_advisor'
       get 'unanswered'
@@ -18,6 +19,9 @@ Rails.application.routes.draw do
       get 'content'
       post 'set_content'
       get 'completed', to: 'requests#create'
+    end
+    member do
+      get 'chat'
     end
   end
 end
