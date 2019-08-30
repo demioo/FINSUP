@@ -40,7 +40,11 @@ class RequestPolicy < ApplicationPolicy
   private
 
   def accept_advisor
-    record[0].advisor == user
+    if record[0]
+      record[0].advisor == user
+    else
+      true
+    end
   end
 
   def reject_advisors

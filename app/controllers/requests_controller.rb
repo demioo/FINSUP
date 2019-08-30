@@ -13,9 +13,9 @@ class RequestsController < ApplicationController
   end
 
   def dashboard_advisor
-    @requests = policy_scope(Request)
-    authorize @requests
+    # @requests = policy_scope(Request)
     @requests = policy_scope(Request).where(advisor: current_user)
+    authorize @requests
   end
 
   def unanswered
