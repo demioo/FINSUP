@@ -2,10 +2,10 @@
   <div class="form-index-background">
     <h1>What's your goal?</h1>
     <% Request::TYPES.each do |type| %>
-      <div>
+      <div class="row justify-content-center">
         <%= simple_form_for :specialty, url: specialty_requests_path, method: :post, class: 'button-links' do |f| %>
           <%= f.input :specialty, as: :hidden, input_html: { value: type } %>
-          <%= f.submit type, class: 'button-links' %>
+          <%= f.submit type.capitalize, class: 'button-links' %>
         <% end %>
       </div>
     <% end %>
