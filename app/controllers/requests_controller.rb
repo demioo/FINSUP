@@ -8,7 +8,7 @@ class RequestsController < ApplicationController
 
   def chat
     @request = Request.find(params[:id])
-    @response = Response.new
+    @responses = @request.responses
     authorize @request
   end
 
