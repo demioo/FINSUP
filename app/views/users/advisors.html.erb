@@ -1,20 +1,23 @@
-<div class="background-container">
-  <div class="advisor-index-background">
-    <h1>Advisors</h1>
-      <% @advisors.each do |advisor| %>
-        <div class="card-trip">
-
-          <div class="card-trip-infos margin-bottom">
-            <div>
-              <h3><%= link_to advisor.first_name.capitalize, show_advisor_user_path(advisor) %></h3>
-              <h5><%= advisor.bio unless advisor.bio.nil? || advisor.bio.empty? %></h5>
-            </div>
-          </div>
+<div class="my-container">
+  <h1>Advisors</h1>
+  <div class="wrapper">
+  <% @advisors.each do |advisor| %>
+    <div class="tweet-cards">
+      <div class="card-top">
+      </div>
+      <div class="profile-pic">
+        <img src="https://unsplash.com/photos/MTZTGvDsHFY"/>
+      </div>
+      <div class="card-bottom">
+        <p id="name">
+          <%= link_to advisor.first_name.capitalize, show_advisor_user_path(advisor) %>
+        </p>
+        <div class="tweet">
+          <p><strong>Specialty: </strong></p>
+          <h5 id="date"> <strong> Response Time:</strong><%= advisor.response_time %>hours</h5>
         </div>
-      <% end %>
+      </div>
+    </div>
+  <% end %>
   </div>
 </div>
-
-
-
-
