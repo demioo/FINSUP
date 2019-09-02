@@ -3,17 +3,18 @@
   text-align: center;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 8px;
+  grid-column-gap: 8px;
+  grid-row-gap: 60px;
 
 }
 
 .tweet-cards{
-  background-color: #F4F4F4;
+  background-color: #FFFFFF;
   width:161px;
   height:161px;
   margin: auto;
   border-radius: 2px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
 
 }
 
@@ -23,12 +24,12 @@
 }
 
 .tweet-cards .profile-pic{
-  height:60px;
+  height:45px;
 }
 
 .tweet-cards .profile-pic img{
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   position: relative;
   margin: -52px 0 0 6px;
@@ -43,7 +44,7 @@ p#name a{
     font-size: 20px;
     font-weight: bold;
     position: relative;
-    bottom: 8px;
+    bottom: 5px;
 }
 
 .tweet{
@@ -53,7 +54,7 @@ p#name a{
     height: 51px;
     word-wrap: break-word;
     text-align: center;
-    line-height: 18px;
+    line-height: 8px;
     margin: auto;
     font-weight: 200;
     font-family: helvetica neue;

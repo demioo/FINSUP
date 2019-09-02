@@ -1,27 +1,24 @@
-<h1>Your selected advisor</h1>
-  <div class="background-container">
-    <div class="advisor-show-background">
-      <%= simple_form_for @request, method: :post do |f| %>
-      <div class="advisor_main">
-        <h3><%= @advisor.first_name.capitalize %></h3>
-        <p><strong>Specialty: </strong></p>
-        <p><strong> Response Time:</strong> <%= @advisor.response_time %></p>
-      </div>
-      <div class="advisor_bio">
-        <h3><strong>Biography: </strong></h3>
-        <p><%= @advisor.bio unless @advisor.bio.nil? || @advisor.bio.empty? %></p>
-      </div>
-      <div class= "reviews">
-        <h3><strong>Reviews: </strong> </h3>
-      </div>
-
-      <%= f.input :advisor_id, as: :hidden, input_html: { value: @advisor.id }  %>
-      <%= f.submit 'Book me!', class: "btn btn-danger btn-md" %>
-
-      <% end %>
-      <%= link_to 'back to advisors', advisors_users_path %>
+<div class="background-container">
+    <%= simple_form_for @request, method: :post do |f| %>
+    <div class="advisor_main">
+      <h3><%= @advisor.first_name.capitalize %> <%= @advisor.last_name.capitalize %></h3>
+      <p><strong>Specialty: </strong></p>
+      <p><strong> Response Time:</strong> <%= @advisor.response_time %>hours</p>
     </div>
-   </div>
+    <div class="advisor_bio">
+      <p><strong>Biography: </strong></p>
+      <p><%= @advisor.bio unless @advisor.bio.nil? || @advisor.bio.empty? %></p>
+    </div>
+    <div class="d-flex justify-content-center">
+      <%= f.submit 'Book me!', class: "btn btn-danger btn-md" %>
+    </div>
+    <div class= "reviews">
+      <p><strong>Reviews: </strong> </p>
+    </div>
+    <%= f.input :advisor_id, as: :hidden, input_html: { value: @advisor.id }  %>
+    <% end %>
+    <%= link_to 'back to advisors', advisors_users_path %>
+</div>
 
 
 

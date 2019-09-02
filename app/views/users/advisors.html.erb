@@ -1,4 +1,4 @@
-<div class="advisor-index-background">
+<div class="my-container">
   <h1>Advisors</h1>
   <div class="wrapper">
   <% @advisors.each do |advisor| %>
@@ -14,7 +14,7 @@
         </p>
         <div class="tweet">
           <p><strong>Specialty: </strong></p>
-          <h5 id="date"> <strong> Response Time:</strong><%= advisor.response_time %></h5>
+          <h5 id="date"> <strong> Response Time:</strong><%= advisor.response_time %>hours</h5>
         </div>
       </div>
     </div>
