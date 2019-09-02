@@ -31,10 +31,19 @@
   margin: 130px auto 30px;
 
   h1 {
-    margin: 0 0 215px;
+    text-align: center;
+    margin: 0 0 10px;
     padding-top: 20px;
-    font-size: 50px;
+    font-size: 70px;
     font-family: $title-font;
+    font-color: #FE6600;
+  }
+
+  h2 {
+    text-align: center;
+    font-family: $subtitle-font;
+    font-size: 44px;
+    margin: 0 0 260px;
   }
 
   a.btn {
