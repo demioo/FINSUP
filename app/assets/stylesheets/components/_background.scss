@@ -1,11 +1,25 @@
 .homepage-background {
-  background-image: asset-url('homepage.png');
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 667px;
   position: relative;
-  opacity: 0.5;
+  // background-image: asset-url('homepage.png');
+  // background-size: cover;
+  // background-position: center;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-image: asset-url('homepage.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: -1;
+  }
+
 }
 
 .background-container {
@@ -13,80 +27,187 @@
 }
 
 .form-index-background {
-  background-image: asset-url('form_index.png');
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 667px;
   position: relative;
-  opacity: 0.5;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-image: asset-url('form_index.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: -1;
+  }
+
 }
 
 .advisor-show-background {
-  background-image: asset-url('advisor_show.png');
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 667px;
   position: relative;
-  opacity: 0.5;
+  // background-image: asset-url('homepage.png');
+  // background-size: cover;
+  // background-position: center;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-image: asset-url('advisor_show.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: -1;
+  }
+
 }
+
 .advisor-index-background {
-  background-image: asset-url('advisor_index.png');
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 667px;
   position: relative;
-  opacity: 0.5;
+  // background-image: asset-url('homepage.png');
+  // background-size: cover;
+  // background-position: center;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-image: asset-url('advisor_index.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: -1;
+  }
+
 }
 
 .billpay-form-background {
-  background-image: asset-url('billPayment.png');
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 667px;
   position: relative;
-  opacity: 0.5;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-image: asset-url('billPayment.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: -1;
+  }
+
 }
 
 .budget-form-background {
-  background-image: asset-url('budget.png');
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 667px;
   position: relative;
-  opacity: 0.5;
+  // background-image: asset-url('homepage.png');
+  // background-size: cover;
+  // background-position: center;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-image: asset-url('budget.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: -1;
+  }
+
 }
 
 .chat-page-background {
-  background-image: asset-url('chat_page.png');
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 667px;
   position: relative;
-  opacity: 0.5;
+  // background-image: asset-url('homepage.png');
+  // background-size: cover;
+  // background-position: center;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-image: asset-url('chat_page.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: -1;
+  }
+
 }
 
 .dashboard-background {
-  background-image: asset-url('dashboard.png');
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 667px;
   position: relative;
-  opacity: 0.5;
+  // background-image: asset-url('homepage.png');
+  // background-size: cover;
+  // background-position: center;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-image: asset-url('dashboard.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: -1;
+  }
+
 }
 
 .savings-form-background {
-  background-image: asset-url('savings.png');
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 667px;
   position: relative;
-  opacity: 0.5;
+  // background-image: asset-url('homepage.png');
+  // background-size: cover;
+  // background-position: center;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-image: asset-url('savings.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: -1;
+  }
+
 }
