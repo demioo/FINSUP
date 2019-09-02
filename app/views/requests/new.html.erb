@@ -1,13 +1,31 @@
+
 <div class="background-container">
   <div class="form-index-background">
     <h1>What's your goal?</h1>
-    <% Request::TYPES.each do |type| %>
-      <div class="row justify-content-center">
-        <%= simple_form_for :specialty, url: specialty_requests_path, method: :post, class: 'button-links' do |f| %>
-          <%= f.input :specialty, as: :hidden, input_html: { value: type } %>
-          <%= f.submit type.capitalize, class: 'button-links' %>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <% Request::TYPES.each_with_index do |type, index| %>
+        <div class="carousel-item <%= "active" if index == 0 %>">
+           <%= simple_form_for :specialty, url: specialty_requests_path, method: :post, class: 'd-block w-100 button-links' do |f| %>
+              <%= f.input :specialty, as: :hidden, input_html: { value: type } %>
+              <%= f.submit type.capitalize, class: 'd-block w-100 button-links' %>
+            <% end %>
+        </div>
         <% end %>
       </div>
-    <% end %>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon fleche " aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon fleche" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
   </div>
 </div>
