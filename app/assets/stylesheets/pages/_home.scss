@@ -12,10 +12,27 @@
   width: 80px;
 }
 
-.wings h2 {
+#wings {
   padding-top: 100px;
   font-family: 'Great Vibes', cursive;
   font-size: 44px;
 
 }
 
+.banner {
+  background-color: white;
+  height: 50px;
+  width: 100%;
+  background-position: center;
+  padding: 10px 0;
+}
+
+.banner h1 {
+  margin: 0;
+  padding-top: 20px;
+  color: #FE6600;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+}
