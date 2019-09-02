@@ -1,23 +1,20 @@
 <div class="background-container">
-  <div class="row justify-content-center">
-    <div class="col-12 col-lg-6">
-      <div class="advisor-index-background">
-        <h1>Advisors</h1>
-          <% @advisors.each do |advisor| %>
-          <%= link_to advisor.first_name, show_advisor_user_path(advisor) %>
-          <div class="card-trip">
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-            <div class="card-trip-infos">
-              <div>
-                <h2>Lotta Money</h2>
-                <p>I'm here to help!</p>
-              </div>
-              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+  <div class="advisor-index-background">
+    <h1>Advisors</h1>
+      <% @advisors.each do |advisor| %>
+        <div class="card-trip">
+
+          <div class="card-trip-infos margin-bottom">
+            <div>
+              <h3><%= link_to advisor.first_name.capitalize, show_advisor_user_path(advisor) %></h3>
+              <h5><%= advisor.bio unless advisor.bio.nil? || advisor.bio.empty? %></h5>
             </div>
           </div>
-
-        <% end %>
-      </div>
-    </div>
+        </div>
+      <% end %>
   </div>
 </div>
+
+
+
+

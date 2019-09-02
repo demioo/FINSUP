@@ -1,15 +1,21 @@
 class RequestsController < ApplicationController
   before_action :authorisations, only: %i[new specialty content set_content]
-  skip_before_action :authenticate_user!, except: %i[index dashboard_advisor unanswered create]
+  skip_before_action :authenticate_user!, except: %i[index dashboard_advisor unanswered create chat]
 
   def index
     @requests = policy_scope(Request).where(client: current_user)
   end
 
+  def chat
+    @request = Request.find(params[:id])
+    @response = Response.new
+    authorize @request
+  end
+
   def dashboard_advisor
-    @requests = policy_scope(Request)
-    authorize @requests
+    # @requests = policy_scope(Request)
     @requests = policy_scope(Request).where(advisor: current_user)
+    authorize @requests
   end
 
   def unanswered
@@ -59,7 +65,7 @@ class RequestsController < ApplicationController
   end
 
   def specialty_test
-    if session[:request]['content'].nil? && session[:request]['advisor_id'].nil?
+    if session[:request]['content'].nil?
       redirect_to content_requests_path
     else
       check_after_specialty
