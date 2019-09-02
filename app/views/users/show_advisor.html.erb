@@ -1,21 +1,35 @@
 <h1>Your selected advisor</h1>
   <div class="background-container">
     <div class="advisor-show-background">
-      <%= simple_form_for @request, method: :post do |f| %>
-
       <h3><%= @advisor.first_name.capitalize %></h3>
-
-              <div>
-                <p>I'm here to help!  Click the linke to book me and lets's fix your finances.</p>
-              </div>
-
-            <%= f.input :advisor_id, as: :hidden, input_html: { value: @advisor.id }  %>
-            <%= f.submit 'book me!', class: "btn btn-danger btn-md" %>
-
-        <% end %>
-        <%= link_to 'back to advisors', advisors_users_path %>
+      <div>
+        <p>I'm here to help!  Click the link to book me and lets's fix your finances.</p>
       </div>
-   </div>
+
+      <%= simple_form_for @request, method: :post, url: requests_path do |f| %>
+        <%= f.input :advisor_id, as: :hidden, input_html: { value: @advisor.id }  %>
+        <%= f.submit 'book me!', class: "btn btn-danger btn-md" %>
+      <% end %>
+
+      <div id="reviews">
+        <% if @request.review.blank? && !@review_check %>
+          <h4 id="form-head">Please leave a review for your request with <%= @advisor.first_name.capitalize %></h4>
+          <%= render 'reviews/form', advisor: @advisor, review: @review, r_id: params[:r_id] %>
+        <% else %>
+          <div id="all-reviews">
+            <h4 class="margin-bottom"><%= @advisor.first_name.capitalize %>'s Reviews</h4>
+            <% @advisor.reviews.each do |review| %>
+              <div class="review-info">
+                <%= review.content %> -- <%= review.rating %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <%= link_to 'back to advisors', advisors_users_path %>
+    </div>
+  </div>
 
 
 

@@ -1,0 +1,36 @@
+function refreshForm(innerHTML) {
+  const newReviewForm = document.getElementById('new_review');
+  newReviewForm.innerHTML = innerHTML;
+}
+
+function addReview(reviewHTML) {
+  const reviews = document.getElementById('reviews');
+  reviews.insertAdjacentHTML('beforeend', reviewHTML);
+}
+
+function removeForm() {
+  const newReviewForm = document.getElementById('new_review');
+  newReviewForm .remove();
+}
+
+function changeText(innerHTML) {
+  const textToChange = document.getElementById('form-head');
+  textToChange.innerHTML = `${innerHTML}'s Reviews`;
+}
+
+ function showReviews() {
+  allReviews = document.getElementById('all-reviews');
+  <%  @all_reviews.each do |rev| %>
+  allReviews.innerHTML += "<div class='review-info'> <%= rev %> </div>"
+    <% end %>
+}
+
+
+<% if @review.errors.any? %>
+  refreshForm('<%= j render "reviews/form", advisor: @advisor, review: @review, r_id: @r_id %>');
+<% else %>
+  addReview('<%= j render "reviews/show", review: @review %>');
+  removeForm();
+  changeText('<%= @advisor.first_name.capitalize%>');
+  showReviews();
+<% end %>
