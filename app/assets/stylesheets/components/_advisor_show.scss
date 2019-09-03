@@ -1,0 +1,28 @@
+.profile-pic img{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  position: relative;
+  margin: -6px 0 0 6px;
+  border: 4px solid white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.advisor-main{
+  display: flex;
+}
+
+.basic-info{
+  margin-left: 45px;
+}
+
+.availability{
+  margin-left: 5px;
+}
+.profile{
+  margin-left: 5px;
+}
+
+#reviews{
+  margin-left: 5px;
+}
