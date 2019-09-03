@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authorisations, except: [:edit, :update]
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, except: [:edit, :update]
 
   def advisors
     @advisors = policy_scope(User).where(role: 'advisor')
