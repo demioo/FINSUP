@@ -1,0 +1,50 @@
+<%= simple_form_for :content, url: set_content_requests_path, method: :post do |f| %>
+      <div class="form-container">
+        <div class="p-3 mb-0.25">
+          <div class="slidecontainer">
+            <div class="form-headers">What is your monthly income?</div>
+              <input type="range" min="1" max="6000" value="500" class="slider" id="myRange-bill" name="content[monthly_income]">
+              <br>
+              <br>
+              <p>Income: £<span id="demo-bill"></span></p>
+            </div>
+          </div>
+        <div class="p-3 mb-0.5">
+          <div class="form-headers">Paycheck frequency:</div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Weekly" name="content[paycheck_frequency]">
+              <label class="form-check-label" for="inlineCheckbox1">Weekly</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Bi-Weekly" name="content[paycheck_frequency]">
+              <label class="form-check-label" for="inlineCheckbox2">Bi-Weekly</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Monthly" name="content[paycheck_frequency]">
+              <label class="form-check-label" for="inlineCheckbox3">Monthly</label>
+            </div>
+        </div>
+          <div class="p-3 mb-0.5">
+            <%= f.input :fixed_expenses, label: "What are your fixed expenses?" %>
+          </div>
+          <div class="p-3 mb-0.5">
+            <%= f.input :due_dates, label: "What are the due dates of your bills?" %>
+          </div>
+          <div class="p-3 mb-0.5">
+            <%= f.input :content, label: "What are you willing to change?" %>
+          </div>
+          <div class="d-flex justify-content-center" style="padding-bottom: 15px">
+            <%= f.submit 'submit',  class: 'btn btn-danger btn-md' %>
+          </div>
+        </div>
+    <% end %>
+
+<script>
+var sliderBill = document.getElementById("myRange-bill");
+var bill = document.getElementById("demo-bill");
+bill.innerHTML = sliderBill.value;
+
+sliderBill.oninput = function() {
+  bill.innerHTML = this.value;
+}
+</script>

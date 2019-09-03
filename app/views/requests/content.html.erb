@@ -1,130 +1,14 @@
 <div class="background-container">
-
-    <div class="row justify-content-center">
-      <div class="col-12 col-lg-6 offset-md-3">
-        <div class="billpay-form-background">
-          <% if session[:request]['specialty'] == 'budgeting' %>
-            <%= simple_form_for :content, url: set_content_requests_path, method: :post do |f| %>
-              <div class="form-fillout">
-                <div class="shadow-sm p-3 mb-5 bg-white rounded">
-
-                  <div class="slidecontainer">
-                    <div class="form-headers">What is your monthly income?</div>
-                    <input type="range" min="1" max="6000" value="500" class="slider" id="myRange" name="content[monthly_income]">
-                    <p>Income: £<span id="demo"></span></p>
-                  </div>
-                </div>
-                <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                  <div class="form-headers">Paycheck frequency:</div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Weekly" name="content[paycheck_frequency]">
-                    <label class="form-check-label" for="inlineCheckbox1">Weekly</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Bi-Weekly" name="content[paycheck_frequency]">
-                    <label class="form-check-label" for="inlineCheckbox2">Bi-Weekly</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Monthly" name="content[paycheck_frequency]">
-                    <label class="form-check-label" for="inlineCheckbox3">Monthly</label>
-                  </div>
-                </div>
-                <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                  <%= f.input :fixed_expenses, label: "What are your fixed expenses?" %>
-                </div>
-                <div class="shadow-sm p-3 mb-5 bg-white rounded">
-
-                   <div class="slidecontainer">
-                    <div class="form-headers">What is your household size?</div>
-                    <input type="range" min="1" max="10" value="2" class="slider" id="myRange" name="content[household_size]">
-                    <p>Peeps: <span id="demo"></span></p>
-                  </div>
-                </div>
-                <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                  <%= f.input :content, label: "What are you willing to change?" %>
-                </div>
-                <div class="d-flex justify-content-center">
-                  <%= f.submit 'submit',  class: 'btn btn-danger btn-md' %>
-                </div>
-              </div>
-            <% end %>
-          <% elsif session[:request]['specialty'] == 'bill paying' %>
-            <%= simple_form_for :content, url: set_content_requests_path, method: :post do |f| %>
-              <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                <div class="slidecontainer">
-                  <div class="form-headers">What is your monthly income?</div>
-                    <input type="range" min="1" max="6000" value="50" class="slider" id="myRange" name="content[monthly_income]">
-                    <p>Income: £<span id="demo"></span></p>
-                </div>
-              </div>
-              <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                <div class="form-headers">Paycheck frequency:</div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Weekly" name="content[paycheck_frequency]">
-                    <label class="form-check-label" for="inlineCheckbox1">Weekly</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Bi-Weekly" name="content[paycheck_frequency]">
-                    <label class="form-check-label" for="inlineCheckbox2">Bi-Weekly</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Monthly" name="content[paycheck_frequency]">
-                    <label class="form-check-label" for="inlineCheckbox3">Monthly</label>
-                  </div>
-              </div>
-              <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                <%= f.input :fixed_expenses, label: "What are your fixed expenses?" %>
-              </div>
-              <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                <%= f.input :due_dates, label: "What are the due dates of your bills?" %>
-              </div>
-              <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                <%= f.input :content, label: "What are you willing to change?" %>
-              </div>
-              <div class="d-flex justify-content-center">
-                <%= f.submit 'submit',  class: 'btn btn-danger btn-md' %>
-              </div>
-            <% end %>
-          <% elsif session[:request]['specialty'] == 'saving' %>
-            <%= simple_form_for :content, url: set_content_requests_path, method: :post do |f| %>
-              <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                <div class="slidecontainer">
-                  <div class="form-headers">What is your monthly income?</div>
-                    <input type="range" min="1" max="6000" value="50" class="slider" id="myRange" name="content[monthly_income]">
-                    <p>Income: £<span id="demo"></span></p>
-                </div>
-              </div>
-              <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                <%= f.input :fixed_expenses, label: "What are your fixed expenses?" %>
-              </div>
-              <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                <%= f.input :savings_goal, label: "What are your savings goals? (ex. £1000, 2 months' salary)" %>
-              </div>
-              <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                <%= f.input :bank_account, label: "Do you have a bank account?", collection: %w[Yes No] %>
-              </div>
-              <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                <%= f.input :content, label:  "What are you willing to change?" %>
-              </div>
-              <div class="d-flex justify-content-center">
-                <%= f.submit 'submit',  class: 'btn btn-danger btn-md' %>
-              </div>
-            <% end %>
-          <% else %>
-            <%= link_to 'Start now', new_request_path %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-
+  <div class="budget-form-background">
+    <% if session[:request]['specialty'] == 'budgeting' %>
+      <%=  render "budget" %>
+    <% elsif session[:request]['specialty'] == 'bill paying' %>
+      <%=  render "bill" %>
+    <% elsif session[:request]['specialty'] == 'saving' %>
+      <%=  render "saving" %>
+    <% else %>
+      <%= link_to 'Start now', new_request_path %>
+    <% end %>
+  </div>
 </div>
 
-<script>
-var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
-output.innerHTML = slider.value;
-
-slider.oninput = function() {
-  output.innerHTML = this.value;
-}
-</script>
