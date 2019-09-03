@@ -13,7 +13,7 @@
           <%= link_to advisor.first_name.capitalize, show_advisor_user_path(advisor) %>
         </p>
         <div class="tweet">
-          <p><strong>Specialty: </strong></p>
+          <p><strong>Specialty: </strong> <%= session[:request]["specialty"] %></p>
           <h5 id="date"> <strong> Response Time:</strong><%= advisor.response_time %>hours</h5>
         </div>
       </div>

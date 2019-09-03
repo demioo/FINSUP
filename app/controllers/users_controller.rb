@@ -4,6 +4,12 @@ class UsersController < ApplicationController
 
   def advisors
     @advisors = policy_scope(User).where(role: 'advisor')
+                                  .where.not(photo: nil)
+                                  .where.not(response_time: nil)
+                                  .where.not(bio: nil)
+    @advisors = @advisors.select do |advisor|
+      advisor.saving || advisor.budgeting || advisor.bill_paying
+    end
   end
 
   def show_advisor
