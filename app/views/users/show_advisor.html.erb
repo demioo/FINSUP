@@ -1,18 +1,38 @@
-<h1>Your selected advisor</h1>
   <div class="background-container">
     <div class="advisor-show-background">
-      <h3><%= @advisor.first_name.capitalize %></h3>
+      <h1><%= @advisor.first_name.capitalize %> <%= @advisor.last_name.capitalize unless  @advisor.last_name.capitalize.nil? %></h1>
       <div>
         <p>I'm here to help!  Click the link to book me and lets's fix your finances.</p>
       </div>
 
       <%= simple_form_for @request, method: :post, url: requests_path do |f| %>
         <%= f.input :advisor_id, as: :hidden, input_html: { value: @advisor.id }  %>
-        <%= f.submit 'book me!', class: "btn btn-danger btn-md" %>
+        <%= f.submit 'Book Me!', class: "btn btn-danger btn-md" %>
       <% end %>
 
       <div id="reviews">
-        <% if @request.review.blank? && !@review_check %>
+        <% if @request.id.nil? %>
+          <div id="all-reviews">
+            <h4 class="margin-bottom"><%= @advisor.first_name.capitalize %>'s Reviews</h4>
+
+            <% @advisor.reviews.each do |review| %>
+              <div class="col-12 margin-bottom review-info">
+                <div class="reviewer">
+                  <p class="small-margin-bottom"> <%= review.client.first_name %> </p>
+                </div>
+                  <div class="review-body">
+                    <p><%= review.rating.times do %>
+                      <i class="fas fa-star"></i>
+                      <% end %>
+                    </p>
+                    <p> <%= review.content %> </p>
+                  </div>
+              </div>
+            <% end %>
+            <h5>Make a request with <%= @advisor.first_name.capitalize %> to leave a review </h5>
+          </div>
+
+        <% elsif @request.review.blank? && params[:r_id] %>
           <h4 id="form-head">Please leave a review for your request with <%= @advisor.first_name.capitalize %></h4>
           <%= render 'reviews/form', advisor: @advisor, review: @review, r_id: params[:r_id] %>
         <% else %>
@@ -37,7 +57,10 @@
         <% end %>
       </div>
 
-      <%= link_to 'back to advisors', advisors_users_path %>
+      <% if params[:r_id] %>
+      <% else %>
+        <%= link_to 'Back to Advisors', advisors_users_path %>
+      <% end %>
     </div>
   </div>
 
