@@ -1,5 +1,5 @@
 <div class="background-container">
-  <div class="my-container">
+
     <div class="row justify-content-center">
       <div class="col-12 col-lg-6 offset-md-3">
         <div class="billpay-form-background">
@@ -7,16 +7,38 @@
             <%= simple_form_for :content, url: set_content_requests_path, method: :post do |f| %>
               <div class="form-fillout">
                 <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                  <%= f.input :monthly_income, label: "What is your monthly income?" %>
+
+                  <div class="slidecontainer">
+                    <div class="form-headers">What is your monthly income?</div>
+                    <input type="range" min="1" max="6000" value="500" class="slider" id="myRange" name="content[monthly_income]">
+                    <p>Income: £<span id="demo"></span></p>
+                  </div>
                 </div>
                 <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                  <%= f.input :paycheck_frequency, collection: %w[Weekly Bi-Weekly Monthly] %>
+                  <div class="form-headers">Paycheck frequency:</div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Weekly" name="content[paycheck_frequency]">
+                    <label class="form-check-label" for="inlineCheckbox1">Weekly</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Bi-Weekly" name="content[paycheck_frequency]">
+                    <label class="form-check-label" for="inlineCheckbox2">Bi-Weekly</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Monthly" name="content[paycheck_frequency]">
+                    <label class="form-check-label" for="inlineCheckbox3">Monthly</label>
+                  </div>
                 </div>
                 <div class="shadow-sm p-3 mb-5 bg-white rounded">
                   <%= f.input :fixed_expenses, label: "What are your fixed expenses?" %>
                 </div>
                 <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                  <%= f.input :household_size, label: "Household size?" %>
+
+                   <div class="slidecontainer">
+                    <div class="form-headers">What is your household size?</div>
+                    <input type="range" min="1" max="10" value="2" class="slider" id="myRange" name="content[household_size]">
+                    <p>Peeps: <span id="demo"></span></p>
+                  </div>
                 </div>
                 <div class="shadow-sm p-3 mb-5 bg-white rounded">
                   <%= f.input :content, label: "What are you willing to change?" %>
@@ -29,10 +51,26 @@
           <% elsif session[:request]['specialty'] == 'bill paying' %>
             <%= simple_form_for :content, url: set_content_requests_path, method: :post do |f| %>
               <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                <%= f.input :monthly_income, label: "What is your monthly income?" %>
+                <div class="slidecontainer">
+                  <div class="form-headers">What is your monthly income?</div>
+                    <input type="range" min="1" max="6000" value="50" class="slider" id="myRange" name="content[monthly_income]">
+                    <p>Income: £<span id="demo"></span></p>
+                </div>
               </div>
               <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                <%= f.input :paycheck_frequency, collection: %w[Weekly Bi-Weekly Monthly] %>
+                <div class="form-headers">Paycheck frequency:</div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Weekly" name="content[paycheck_frequency]">
+                    <label class="form-check-label" for="inlineCheckbox1">Weekly</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Bi-Weekly" name="content[paycheck_frequency]">
+                    <label class="form-check-label" for="inlineCheckbox2">Bi-Weekly</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Monthly" name="content[paycheck_frequency]">
+                    <label class="form-check-label" for="inlineCheckbox3">Monthly</label>
+                  </div>
               </div>
               <div class="shadow-sm p-3 mb-5 bg-white rounded">
                 <%= f.input :fixed_expenses, label: "What are your fixed expenses?" %>
@@ -50,7 +88,11 @@
           <% elsif session[:request]['specialty'] == 'saving' %>
             <%= simple_form_for :content, url: set_content_requests_path, method: :post do |f| %>
               <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                <%= f.input :monthly_income, label: "What is your monthly income?" %>
+                <div class="slidecontainer">
+                  <div class="form-headers">What is your monthly income?</div>
+                    <input type="range" min="1" max="6000" value="50" class="slider" id="myRange" name="content[monthly_income]">
+                    <p>Income: £<span id="demo"></span></p>
+                </div>
               </div>
               <div class="shadow-sm p-3 mb-5 bg-white rounded">
                 <%= f.input :fixed_expenses, label: "What are your fixed expenses?" %>
@@ -74,5 +116,15 @@
         </div>
       </div>
     </div>
-  </div>
+
 </div>
+
+<script>
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+</script>

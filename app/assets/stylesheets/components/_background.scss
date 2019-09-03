@@ -1,8 +1,5 @@
 .homepage-background {
   position: relative;
-  // background-image: asset-url('homepage.png');
-  // background-size: cover;
-  // background-position: center;
   width: 100%;
   height: 100vh;
   position: relative;
@@ -24,7 +21,8 @@
 
 .background-container {
   padding: 0;
-  background-color: white;
+  margin: 0;
+  background-size: cover;
 }
 
 .form-index-background {
@@ -138,7 +136,7 @@
     opacity: 0.3;
     z-index: -1;
   }
-  
+
 }
 
 .chat-page-background {
