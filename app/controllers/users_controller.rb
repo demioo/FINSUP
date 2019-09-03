@@ -7,8 +7,14 @@ class UsersController < ApplicationController
   end
 
   def show_advisor
-    @request = Request.new
+    if params[:r_id]
+      @request = Request.find(params[:r_id])
+    else
+      @request = Request.new
+    end
     @advisor = User.find(params[:id])
+    @review = Review.new
+    # raise
   end
 
   private
