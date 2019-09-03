@@ -1,10 +1,14 @@
 <% @advisor.reviews.each do |review| %>
-  <div class="review-info margin-bottom">
+  <div class="col-12 margin-bottom review-info">
     <div class="reviewer">
       <p class="small-margin-bottom"> <%= review.client.first_name %> </p>
     </div>
       <div class="review-body">
-        <%= review.content %> ---- <%= review.rating.times do %> <i class="fas fa-star"></i> <% end %>
+        <p><%= review.rating.times do %>
+          <i class="fas fa-star"></i>
+          <% end %>
+        </p>
+        <p> <%= review.content %> </p>
       </div>
   </div>
 <% end %>
