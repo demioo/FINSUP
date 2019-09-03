@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
     @review.client = current_user
     @r_id = params[:review][:request_id]
     @review_check = Request.select { |r| r.client_id == current_user && r.advisor_id == @advisor }.count.zero?
-    @all_reviews = @advisor.reviews
+    @advisor_reviews = @advisor.reviews
     authorize @review
 
     if @review.save

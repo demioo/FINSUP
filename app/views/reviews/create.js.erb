@@ -20,7 +20,7 @@ function changeText(innerHTML) {
 
  function showReviews() {
   allReviews = document.getElementById('all-reviews');
-  <%  @all_reviews.each do |rev| %>
+  <%  @advisor_reviews.each do |rev| %>
   allReviews.innerHTML += "<div class='review-info'> <%= rev %> </div>"
     <% end %>
 }

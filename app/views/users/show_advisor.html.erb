@@ -18,9 +18,19 @@
         <% else %>
           <div id="all-reviews">
             <h4 class="margin-bottom"><%= @advisor.first_name.capitalize %>'s Reviews</h4>
+
             <% @advisor.reviews.each do |review| %>
-              <div class="review-info">
-                <%= review.content %> -- <%= review.rating %>
+              <div class="col-12 margin-bottom review-info">
+                <div class="reviewer">
+                  <p class="small-margin-bottom"> <%= review.client.first_name %> </p>
+                </div>
+                  <div class="review-body">
+                    <p><%= review.rating.times do %>
+                      <i class="fas fa-star"></i>
+                      <% end %>
+                    </p>
+                    <p> <%= review.content %> </p>
+                  </div>
               </div>
             <% end %>
           </div>

@@ -1,5 +1,5 @@
 <div id="new_review">
-  <%= simple_form_for([ advisor, review ]) do |form| %>
+  <%= simple_form_for([ advisor, review ], remote: true) do |form| %>
     <%= form.input :content, as: :text %>
     <%= form.input :rating, collection: %w[1 2 3 4 5] %>
     <%= form.input :request_id, as: :hidden, input_html: { value: r_id } %>
