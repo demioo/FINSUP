@@ -1,0 +1,65 @@
+<%= simple_form_for :content, url: set_content_requests_path, method: :post do |f| %>
+        <div class="form-container">
+          <div class="p-2 mb-0">
+            <div class="slidecontainer">
+              <div class="form-headers">What is your monthly income?</div>
+              <input type="range" min="1" max="6000" value="500" class="slider" id="myRange-income" name="content[monthly_income]">
+              <br>
+              <br>
+              <p>Income: £<span id="demo-income"></span></p>
+            </div>
+          </div>
+          <div class="p-3 mb-1">
+            <div class="form-headers">Paycheck frequency:</div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Weekly" name="content[paycheck_frequency]">
+              <label class="form-check-label" for="inlineCheckbox1">Weekly</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Bi-Weekly" name="content[paycheck_frequency]">
+              <label class="form-check-label" for="inlineCheckbox2">Bi-Weekly</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Monthly" name="content[paycheck_frequency]">
+              <label class="form-check-label" for="inlineCheckbox3">Monthly</label>
+            </div>
+          </div>
+          <div class="p-3 mb-0.5">
+            <%= f.input :fixed_expenses, label: "What are your fixed expenses?" %>
+          </div>
+          <div class="p-2 mb-0">
+             <div class="slidecontainer">
+              <div class="form-headers">What is your household size?</div>
+              <input type="range" min="1" max="10" value="2" class="slider" id="myRange-peeps" name="content[household_size]">
+              <br>
+              <br>
+              <p>Peeps: <span id="demo-peeps"></span></p>
+            </div>
+          </div>
+          <div class="p-3 2 mb-0.5">
+            <%= f.input :content, label: "What are you willing to change?" %>
+          </div>
+          <div class="d-flex justify-content-center" style="padding-bottom: 15px">
+            <%= f.submit 'submit',  class: 'btn btn-danger btn-md' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+<script>
+var sliderIncome = document.getElementById("myRange-income");
+var income = document.getElementById("demo-income");
+income.innerHTML = sliderIncome.value;
+
+var sliderPeeps = document.getElementById("myRange-peeps");
+var peeps = document.getElementById("demo-peeps");
+peeps.innerHTML = sliderPeeps.value;
+
+sliderIncome.oninput = function() {
+  income.innerHTML = this.value;
+}
+
+sliderPeeps.oninput = function() {
+  peeps.innerHTML = this.value;
+}
+</script>
