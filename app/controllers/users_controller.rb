@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorisations
+  before_action :authorisations, except: [:edit, :update]
   skip_before_action :authenticate_user!
 
   def advisors
@@ -17,7 +17,27 @@ class UsersController < ApplicationController
     # raise
   end
 
+  def edit
+    @user = User.find(params[:id])
+    authorize @user
+  end
+
+  def update
+    @user = User.find(params[:id])
+    authorize @user
+
+    if @user.update(user_params)
+      redirect_to dashboard_advisor_requests_path
+    else
+      render 'edit'
+    end
+  end
+
   private
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :bio, :response_time, :photo, :budgeting, :saving, :bill_paying)
+  end
 
   def authorisations
     current_user.nil? ? skip_authorization : authorize_pundit
