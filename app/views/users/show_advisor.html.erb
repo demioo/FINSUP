@@ -1,16 +1,38 @@
   <div class="background-container">
-    <div class="advisor-show-background">
-      <h1><%= @advisor.first_name.capitalize %> <%= @advisor.last_name.capitalize unless  @advisor.last_name.capitalize.nil? %></h1>
-      <div>
-        <p>I'm here to help!  Click the link to book me and lets's fix your finances.</p>
+    <div class="advisor-main">
+      <div class="profile-pic">
+        <%= cl_image_tag advisor.photo, height: 1000, crop: :fill %>
+      </div>
+      
+      <div class="basic-info">
+        <h3><%= @advisor.first_name.capitalize %> <%= @advisor.last_name.capitalize unless  @advisor.last_name.capitalize.nil? %></h3>
+        <p> 314 Requests </p>
+        <p> Stars Rating </p>
+      </div>
+     </div>
+
+    <h3><strong>Profile</strong></h3>
+    <div class="profile">
+      <h3> General</h3>
+      <p><em> Specialty</em></p>
+      <p>Biography:</p>
+      <p>
+      I'm here to help!  Click the link to book me and lets's fix your finances.
+      </p>
+    </div>
+
+      <div class="availability">
+        <h3>Availability</h3>
+        <p> 10 hrs response time: </p>
       </div>
 
       <%= simple_form_for @request, method: :post, url: requests_path do |f| %>
         <%= f.input :advisor_id, as: :hidden, input_html: { value: @advisor.id }  %>
-        <%= f.submit 'Book Me!', class: "btn btn-danger btn-md" %>
+        <%= f.submit 'Book Me!', class: "btn btn-danger btn-md", data: {disable_with: "<i class='fas fa-spinner'></i>done".html_safe } %>
       <% end %>
 
       <div id="reviews">
+        <h3> <strong>Reviews</strong></h3>
         <% if @request.id.nil? %>
           <div id="all-reviews">
             <h4 class="margin-bottom"><%= @advisor.first_name.capitalize %>'s Reviews</h4>
@@ -45,7 +67,8 @@
                   <p class="small-margin-bottom"> <%= review.client.first_name %> </p>
                 </div>
                   <div class="review-body">
-                    <p><%= review.rating.times do %>
+                    <p>
+                      <%= review.rating.times do %>
                       <i class="fas fa-star"></i>
                       <% end %>
                     </p>
@@ -53,10 +76,8 @@
                   </div>
               </div>
             <% end %>
-          </div>
+         </div>
         <% end %>
-      </div>
-
       <% if params[:r_id] %>
       <% else %>
         <%= link_to 'Back to Advisors', advisors_users_path %>
