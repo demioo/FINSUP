@@ -4,7 +4,12 @@
       <div class="banner">
         <h1>FINSUP</h1>
         <h2>find your financial wings</h2>
-        <%= link_to 'Start now', new_request_path, class: "btn btn-gradient" %>
+
+        <% if policy(Request).new? %>
+          <%= link_to 'Start now', new_request_path, class: "btn btn-gradient" %>
+        <% else %>
+          <%= link_to 'Dashboard', dashboard_advisor_requests_path, class: "btn btn-gradient" %>
+        <% end %>
       </div>
     </div>
   </div>
