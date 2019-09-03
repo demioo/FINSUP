@@ -20,8 +20,8 @@ class RequestsController < ApplicationController
 
   def unanswered
     @requests = policy_scope(Request)
-    authorize @requests
     @requests = policy_scope(Request).where(advisor: current_user)
+    authorize @requests
   end
 
   def new

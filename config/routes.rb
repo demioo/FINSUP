@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: [] do
+  resources :users, only: [:edit, :update] do
+    resources :reviews, only: [:create]
+
     collection do
       get 'advisors'
     end

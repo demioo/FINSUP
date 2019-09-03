@@ -13,6 +13,10 @@ class UserPolicy < ApplicationPolicy
     reject_advisors
   end
 
+  def update?
+    record == user
+  end
+
   private
 
   def reject_advisors
