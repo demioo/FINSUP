@@ -1,0 +1,24 @@
+<div class="col-12"><%= simple_form_for @user do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :photo %>
+  <%= f.input :bio, as: :text %>
+  <div class="form-headers">Specialty:</div>
+  <div class="d-flex justify-content-between">
+    <%= f.input :budgeting, as: :boolean do %>
+      <%= f.check_box :budgeting, {}, 'true', 'false' %>
+    <% end %>
+    <%= f.input :saving, as: :boolean do %>
+        <%= f.check_box :saving, {}, 'true', 'false' %>
+      <% end %>
+    <%= f.input :bill_paying, as: :boolean do %>
+      <%= f.check_box :bill_paying, {}, 'true', 'false' %>
+    <% end %>
+  </div>
+  <%= f.input :response_time, collection: 1..96, selected: 24, label: "Response Time (hours)" %>
+  <%= f.input :photo_cache, as: :hidden %>
+    <div class="d-flex justify-content-center">
+      <%= f.button :submit, "Submit", class: 'btn-basic btn-md signup-inputs'%>
+    </div>
+  <% end %>
+</div>
