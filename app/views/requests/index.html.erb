@@ -1,20 +1,29 @@
 <div class="background-container">
   <div class="dashboard-background">
-    <h1>Dashboard</h1>
-    <div class="index-container">
-      <% @requests.each do |r| %>
-      <div class="card card-requests">
-        <h4 class="card-header">Advisor: <%= r.advisor.first_name.capitalize %> <%= r.advisor.last_name.capitalize unless r.advisor.last_name.nil? %> </h4>
-        <div class="dashboard-content">
-          <p><strong>Thank you for submitting your form for</strong></p>
-          <h4 style="color: #FE6600; text-align: center"><%= r.specialty unless r.specialty.nil? %></h4>
-            <div class="flexbox">
-              <%= link_to 'Chat', chat_request_path(r), class: 'btn btn-danger btn-md' %>
-              <%= link_to 'Leave a Review', show_advisor_user_path(r.advisor, r_id: r.id), class: 'btn btn-danger btn-md'  %>
-            </div>
+    <div class="dash-note">
+      <p>Here's a history of all your requests!  We hope they help you earn your financial wings 💸</p>
+      </div>
+      <div class="index-container">
+        <% @requests.each do |r| %>
+        <div class="card_requests">
+          <div class="square_image" style=" background-image: url(<%= cl_image_path r.advisor.photo, height: 1000, crop: :fill  %>)">
           </div>
-        </div>
-      <% end %>
-    </div>
+          <div class="contents">
+            <div class="name_holder">
+              <span id="advisor_t">Advisor: </span><h4 class="card_header" style="text-align: left"> <%= r.advisor.first_name.capitalize %> <%= r.advisor.last_name.capitalize unless r.advisor.last_name.nil? %>
+              </h4>
+          </div>
+              <div class="dashboard_content">
+                <p>Thank you for submitting your form for: <span><%= r.specialty unless r.specialty.nil? %></span>   </p>
+              </div>
+              <div class="flexbox_btn">
+                <%= link_to 'Chat', chat_request_path(r), class: 'btn_dash' %>
+                <%= link_to 'Leave a Review', show_advisor_user_path(r.advisor, r_id: r.id), class: 'btn_dash'  %>
+              </div>
+            </div>
+           </div>
+        <% end %>
+      </div>
   </div>
 </div>
+
