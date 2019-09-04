@@ -5,12 +5,12 @@
 
 }
 
+
 .form-container {
   border-radius: 10px;
   display: center;
   background-color: white;
   margin: 10px auto;
-  box-shadow: 10px 10px 30px rgba(0,0,0,.2);;
   height: 80%;
   width: 80%;
   align-items: center;
@@ -34,5 +34,18 @@
 .form-headers {
   text-align: center;
   padding-bottom: 4%;
+
 }
 
+.paycheck{
+  border-bottom: 1px solid lightgray !important;
+}
+
+.radios {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4vh
+}
+.btn-form{
+  width: 90% !important;
+}
