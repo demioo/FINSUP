@@ -22,14 +22,15 @@
     height: 160px;
     border-radius: 50%;
     background-color: rgb(253, 229, 229);
-    bottom: -300px;
-    left: -40px;
-    z-index: 0;
+    bottom: 0;
+    left: -100px;
+    z-index: -1;
   }
 }
 
 .advisor-index-container {
   padding-left: 20px;
+  overflow: hidden;
 }
 
 .random-container {
@@ -46,9 +47,9 @@
     height: 80px;
     border-radius: 50%;
     background-color: rgb(254, 247, 228);
-    bottom: -200px;
+    bottom: 0;
     left: 160px;
-    z-index: 0;
+    z-index: -1;
   }
 }
 
@@ -66,15 +67,15 @@
     height: 120px;
     border-radius: 50%;
     background-color: rgb(250, 239, 232);
-    bottom: -300px;
-    left: 300px;
-    z-index: 0;
+    bottom: 0px;
+    left: 310px;
+    z-index: -1;
   }
 }
 
 .tweet-cards{
   display: flex;
-  background-color: white;
+  background-color: transparent;
   width: 95%;
   height: 120px;
   border-bottom: 1px solid rgb(230, 230, 230);
