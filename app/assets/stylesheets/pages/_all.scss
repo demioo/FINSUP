@@ -35,6 +35,15 @@
   padding-left: 0px;
 }
 
+
+.flexbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
 .fa-star {
   color: $cedric-orange;
 }
@@ -45,6 +54,7 @@ a.advisor-cards {
 
 #name {
   color: #FE6500;
+
 }
 
 .padding-left {
@@ -53,4 +63,8 @@ a.advisor-cards {
 
 .padding-bottom {
   padding-bottom: 15px;
+}
+
+.fa-caret-left{
+  color: #FE6500;
 }

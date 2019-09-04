@@ -1,7 +1,5 @@
 <div class="background-container">
-  <div class="row justify-content-center">
-    <div class="col-12 col-lg-6">
-      <div class="dashboard-background">
+  <div class="dashboard-background">
         <% @requests.each do |request| %>
           <% if request.responses.size > 0 %>
             <p><%= request.client.first_name %> <%= request.client.last_name %></p>
@@ -11,7 +9,5 @@
         <% end %>
         <%= link_to 'See new requests', unanswered_requests_path %>
         <%= link_to 'Edit Profile', edit_user_path(current_user) %>
-      </div>
-    </div>
   </div>
 </div>

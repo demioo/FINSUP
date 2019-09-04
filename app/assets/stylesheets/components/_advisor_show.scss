@@ -1,28 +1,64 @@
 .profile-pic img{
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
   position: relative;
   margin: -6px 0 0 6px;
-  border: 4px solid white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  height: 110px;
+  width: 110px;
+  border: 2px solid #D39897;
+  border-radius: 6px;
+}
+
+.no-margin {
+  margin: 0px !important;
 }
 
 .advisor-main{
   display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-top: 25px;
+  padding-bottom: 20px;
 }
 
 .basic-info{
-  margin-left: 45px;
+  // margin-left: 45px;
+  padding: 15px;
 }
 
 .availability{
   margin-left: 5px;
 }
 .profile{
-  margin-left: 5px;
+  margin-left: 10px;
+}
+
+.btn-submit {
+  width: 97% !important;
 }
 
 #reviews{
-  margin-left: 5px;
+  // margin-left: 5px;
+}
+
+.basic-info h3{
+  color: #FE6600;
+  font-weight: lighter;;
+}
+#reviews h3{
+  color: #918F8E;
+  font-weight: normal;
+  font-family: 'Open Sans', 'Helvetica Neue';
+  font-size: 16px;
+}
+
+#all-reviews h6{
+text-decoration: underline;
+}
+.bio p{
+  color: #494949;
+}
+
+.btn-orange{
+  color: #FE6500;
+  padding-bottom: 10px;
 }

@@ -1,0 +1,80 @@
+
+.card_requests {
+  background-color: white;
+  box-shadow: none;
+  display: flex;
+  width: 95vw;
+  height: 130px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid lightgray;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.dash-note {
+  background-color: white;
+  text-align: left;
+  padding-right: 8px;
+  padding-left: 8px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid lightgray;
+
+}
+
+.square_image {
+  height: 110px;
+  width: 100px;
+  margin: 0;
+  border-radius: 8px;
+  border: #FE6600 1px solid;
+
+}
+.name_holder {
+  display: flex;
+  margin-left: 10px;
+  position: absolute;
+     top: -8px;
+    left: 1px;
+
+}
+.card_header {
+margin: 0;
+
+
+}
+#advisor_t {
+  font-weight: lighter !important;
+  font-size: 23px;
+  margin-right: 4px;
+}
+.contents {
+  width: 70%;
+margin-left: 10px;
+position: relative;
+}
+
+.dashboard_content {
+  margin-bottom: 5px;
+  margin-left: 10px;
+  & span {
+    font-weight: bold;
+  }
+  position: absolute;
+      top: 26px;
+    left: 0;
+}
+.btn_dash {
+  font-size: 15px;
+  color: white ;
+  padding: 5px 10px;
+  background-color: #fe6600;
+  border-radius: 2px;
+}
+
+
+.flexbox_btn {
+margin-left: 10px;
+position: absolute;
+    bottom: 21px;
+    right: 53px;
+}
