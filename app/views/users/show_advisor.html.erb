@@ -3,7 +3,7 @@
       <div class="profile-pic">
         <%= cl_image_tag advisor.photo, height: 1000, crop: :fill %>
       </div>
-      
+
       <div class="basic-info">
         <h3><%= @advisor.first_name.capitalize %> <%= @advisor.last_name.capitalize unless  @advisor.last_name.capitalize.nil? %></h3>
         <p> 314 Requests </p>
