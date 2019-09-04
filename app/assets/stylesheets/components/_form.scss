@@ -5,14 +5,18 @@
 
 }
 
+.emoji {
+  font-size: 25px;
+}
 
 .form-container {
+  padding: 0 20px;
   border-radius: 10px;
   display: center;
   background-color: white;
-  margin: 10px auto;
+  margin: 20px auto;
   height: 80%;
-  width: 80%;
+  width: 100%;
   align-items: center;
   flex-direction: column;
 
@@ -31,10 +35,15 @@
   min-width: 70%;
 }
 
-.form-headers {
+.form-headers,
+.content_fixed_expenses label,
+.content_content label  {
+  margin-bottom: 16px;
   text-align: center;
   padding-bottom: 4%;
-
+  font-family: $serif-title-font;
+  font-size: 21px;
+  font-weight: 600;
 }
 
 .paycheck{

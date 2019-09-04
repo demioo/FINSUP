@@ -10,22 +10,22 @@
         <div class="p-3 mb-0.5 paycheck">
           <div class="form-headers">Paycheck frequency:</div>
             <div class="form-check form-check-inline radios">
-              <label class="form-check-label" for="inlineCheckbox1"> 🗓 Weekly</label>
+              <label class="form-check-label" for="inlineCheckbox1"><abbr class="emoji"> 🗓</abbr> Weekly</label>
               <input class="form-check-input" type="radio" id="inlineCheckbox1" value="Weekly" name="content[paycheck_frequency]">
             </div>
             <div class="form-check form-check-inline radios">
-              <label class="form-check-label" for="inlineCheckbox2"> 🗓 Bi-Weekly</label>
+              <label class="form-check-label" for="inlineCheckbox2"><abbr class="emoji"> 🗓</abbr> Bi-Weekly</label>
               <input class="form-check-input" type="radio" id="inlineCheckbox2" value="Bi-Weekly" name="content[paycheck_frequency]">
             </div>
             <div class="form-check form-check-inline radios">
-              <label class="form-check-label" for="inlineCheckbox3"> 🗓 Monthly</label>
+              <label class="form-check-label" for="inlineCheckbox3"><abbr class="emoji"> 🗓</abbr> Monthly</label>
               <input class="form-check-input" type="radio" id="inlineCheckbox3" value="Monthly" name="content[paycheck_frequency]">
             </div>
         </div>
           <div class="p-3 mb-0.5 paycheck">
             <%= f.input :fixed_expenses, as: :text,:input_html => {:rows => 5}, label: "What are your fixed expenses?" %>
           </div>
-          <div class="p-3 mb-0.5 paycheck">
+          <div class="p-3 mb-0.5 paycheck form-headers">
             <%= f.input :due_dates, as: :text,:input_html => {:rows => 5}, label: "What are the due dates of your bills?" %>
           </div>
           <div class="p-3 mb-0.5">
