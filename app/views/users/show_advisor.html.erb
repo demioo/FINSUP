@@ -1,41 +1,36 @@
   <div class="background-container">
+    <% if params[:r_id] %>
+    <% else %>
+        <i class="fas fa-caret-left"></i>
+      <%= link_to 'Back to Advisors', advisors_users_path, class: "btn-orange" %>
+    <% end %>
     <div class="advisor-main">
       <div class="profile-pic">
         <%= cl_image_tag @advisor.photo, height: 1000, crop: :fill %>
       </div>
 
       <div class="basic-info">
-        <h3><%= @advisor.first_name.capitalize %> <%= @advisor.last_name.capitalize unless  @advisor.last_name.capitalize.nil? %></h3>
-        <p> Total requests: <%= Request.where(advisor: @advisor).count %> </p>
-        <p> Average Rating: <%= @average %> <i class="fas fa-star"></i></p>
+        <h3 ><%= @advisor.first_name.capitalize %> <%= @advisor.last_name.capitalize unless  @advisor.last_name.capitalize.nil? %></h3>
+        <p class="no-margin">SPECIALTY: <strong> <%= 'Saving' if @advisor.saving %> <%= 'Budgeting' if @advisor.budgeting %> <%= 'Bill Paying' if @advisor.bill_paying %> </strong></p>
+        <p class="no-margin">RESPONSE TIME: <strong> <%= @advisor.response_time %> Hours </strong></p>
+        <p class="no-margin"></p>
       </div>
-     </div>
-
-    <h3><strong>Info</strong></h3>
-    <div class="profile">
-      <p>Specialty: <%= 'Saving' if @advisor.saving %> <%= 'Budgeting' if @advisor.budgeting %> <%= 'Bill Paying' if @advisor.bill_paying %></p>
-      <p>Bio:</p>
-      <p>
-        <%= @advisor.bio %>
-      </p>
     </div>
+    <div class="profile">
+      <p>RATING </p>
+      <p> <strong><%= @average %> <i class="fas fa-star"></i> </strong></p>
 
-      <div class="availability">
-        <h3>Availability</h3>
-        <p>Response Time: <%= @advisor.response_time %> Hours</p>
+      <p> TOTAL REQUESTS </p>
+      <p><strong><%= Request.where(advisor: @advisor).count %> </strong> </p>
+      <p>BIO</p>
+      <div class="bio">
+        <p><%= @advisor.bio %> </p>
       </div>
-
-      <%= simple_form_for @request, method: :post, url: requests_path do |f| %>
-        <%= f.input :advisor_id, as: :hidden, input_html: { value: @advisor.id }  %>
-        <%= f.submit 'Book Me!', class: "btn btn-danger btn-md", data: {disable_with: "<i class='fas fa-spinner'></i>done".html_safe } %>
-      <% end %>
 
       <div id="reviews">
-        <h3> <strong>Reviews</strong></h3>
+        <h3> REVIEWS</h3>
         <% if @request.id.nil? %>
           <div id="all-reviews">
-            <h4 class="margin-bottom"><%= @advisor.first_name.capitalize %>'s Reviews</h4>
-
             <% @advisor.reviews.each do |review| %>
               <div class="col-12 margin-bottom review-info">
                 <div class="reviewer">
@@ -50,7 +45,7 @@
                   </div>
               </div>
             <% end %>
-            <h5>Make a request with <%= @advisor.first_name.capitalize %> to leave a review </h5>
+            <h6>Make a request with <%= @advisor.first_name.capitalize %> to leave a review </h6>
           </div>
 
         <% elsif @request.review.blank? && params[:r_id] %>
@@ -58,8 +53,7 @@
           <%= render 'reviews/form', advisor: @advisor, review: @review, r_id: params[:r_id] %>
         <% else %>
           <div id="all-reviews">
-            <h4 class="margin-bottom"><%= @advisor.first_name.capitalize %>'s Reviews</h4>
-
+            <h3 class="margin-bottom"><%= @advisor.first_name.capitalize %>'s Reviews</h3>
             <% @advisor.reviews.each do |review| %>
               <div class="col-12 margin-bottom review-info">
                 <div class="reviewer">
@@ -77,10 +71,11 @@
             <% end %>
          </div>
         <% end %>
-      <% if params[:r_id] %>
-      <% else %>
-        <%= link_to 'Back to Advisors', advisors_users_path %>
+        <%= simple_form_for @request, method: :post, url: requests_path do |f| %>
+        <%= f.input :advisor_id, as: :hidden, input_html: { value: @advisor.id }  %>
+        <%= f.submit 'BOOK ME', class: "btn btn-danger btn-md btn-submit", data: {disable_with: "<i class='fas fa-spinner'></i>done".html_safe } %>
       <% end %>
+      </div>
     </div>
   </div>
 
