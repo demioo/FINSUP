@@ -7,6 +7,7 @@ class UsersController < ApplicationController
                                   .where.not(photo: nil)
                                   .where.not(response_time: nil)
                                   .where.not(bio: nil)
+
     @advisors = @advisors.select do |advisor|
       advisor.saving || advisor.budgeting || advisor.bill_paying
     end
