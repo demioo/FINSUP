@@ -6,9 +6,7 @@ class ResponsesController < ApplicationController
     @response.sender = current_user
     flash[:alert] = "Please write a message then submit" unless @response.save
 
-    Pusher.trigger('response-channel', 'new-response', response: @response.content)
-
-    redirect_to chat_request_path(@response.request)
+    Pusher.trigger('response-channel', 'new-response', response: @response.content, advisor: current_user.role == 'advisor', created_at: @response.created_at.strftime('%l:%M %p'))
   end
 
   private
