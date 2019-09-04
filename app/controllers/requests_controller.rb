@@ -103,4 +103,10 @@ class RequestsController < ApplicationController
   def authorize_pundit
     authorize Request.new
   end
+
+  def advisor_dashboard_check
+    if current_user.budgeting.nil? && current_user.saving.nil? && current_user.bill_paying.nil?
+      flash[:alert] = "Hi #{current_user.first_name}, you need to choose a specialty so that our advisors can find you. You can do this by editing your profile."
+    end
+  end
 end

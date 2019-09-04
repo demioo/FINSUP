@@ -2,6 +2,9 @@
   <div class="row justify-content-center">
     <div class="col-12 col-lg-6">
       <div class="dashboard-background">
+        <%= advisor_dashboard_check %>
+
+
         <% @requests.each do |request| %>
           <% if request.responses.size > 0 %>
             <p><%= request.client.first_name %> <%= request.client.last_name %></p>
