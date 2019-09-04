@@ -35,8 +35,16 @@
   padding-left: 0px;
 }
 
+
+.flexbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
 .fa-star {
   color: #FE6500;
+
 }
 
 .flexbox {
