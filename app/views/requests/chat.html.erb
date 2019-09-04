@@ -18,22 +18,27 @@
 <div class="chat-container" id="message_section">
   <% @responses.each do |response| %>
     <% if response.sender.role == 'advisor' %>
-       <div class="d-flex">
-         <div class="advisor-message chat-margin-right">
-           <div class="chat-text">
-             <%= response.content %>
-           </div>
-           <div class="message-time">
-             <%= response.created_at.strftime('%l:%M %p') %>
-           </div>
-         </div>
-       </div>
+      <div class="d-flex">
+        <div class="advisor-message chat-margin-right">
+          <div class="chat-text">
+            <%= response.content %>
+          </div>
+          <div class="message-time">
+            <%= response.created_at.strftime('%l:%M %p') %>
+          </div>
+        </div>
+      </div>
       <% else %>
-       <div class="d-flex justify-content-end">
-         <div class ="client-message chat-margin-left">
-           <%= response.content %>
-         </div>
-       </div>
+        <div class="d-flex justify-content-end">
+          <div class ="client-message chat-margin-left">
+            <div class="chat-text">
+              <%= response.content %>
+            </div>
+            <div class="message-time">
+              <%= response.created_at.strftime('%l:%M %p') %>
+            </div>
+          </div>
+        </div>
       <% end %>
   <% end %>
   <script>
@@ -58,7 +63,12 @@
             div.innerHTML += `
               <div class="d-flex justify-content-end">
                 <div class ="client-message chat-margin-left">
-                  ${response}
+                  <div class="chat-text">
+                    ${response}
+                  </div>
+                  <div class="message-time">
+                    ${data.created_at}
+                  </div>
                 </div>
               </div>
             `
