@@ -1,35 +1,32 @@
 <div class="my-container">
   <h1 class="padding-left padding-bottom">Advisors</h1>
-  <div class="wrapper">
   <% @advisors.each do |advisor| %>
     <%= link_to show_advisor_user_path(advisor), class: 'advisor-cards' do %>
       <div class="tweet-cards">
-        <div class="card-top">
-        </div>
-        <div class="profile-pic">
+        <div class="index-profile-pic">
           <%= cl_image_tag advisor.photo, height: 1000, crop: :fill %>
         </div>
-        <div class="card-bottom">
-          <p id="name">
+        <div class="card-main">
+          <p class="card-name">
             <%= advisor.first_name.capitalize %> <%= advisor.last_name.capitalize unless advisor.last_name.nil? %>
           </p>
-          <div class="tweet">
-            <p>Specialty: <strong><%= 'Saving' if advisor.saving %> <%= 'Budgeting' if advisor.budgeting %> <%= 'Bill Paying' if advisor.bill_paying %></strong> </p>
-            <h5 id="date">  Response Time: <strong><%= advisor.response_time %>h</strong></h5>
-            <p>
-              <% sum = 0 %>
-              <% average = 0 %>
-              <% advisor.reviews.each do |review| %>
-                <% sum += review.rating %>
-                <% occurrences = advisor.reviews.count %>
-                <% average = sum.to_f/occurrences.to_f %>
-              <% end %>
-              <%= average %> <i class="fas fa-star"></i>
-            </p>
-          </div>
+          <p class="advisor-details">Specialty: <strong><%= 'Saving' if advisor.saving %> <%= 'Budgeting' if advisor.budgeting %> <%= 'Bill Paying' if advisor.bill_paying %></strong> </p>
+          <p class="advisor-details">  Response Time: <strong><%= advisor.response_time %>h</strong></p>
+        </div>
+
+        <div class="card-rating">
+          <p>
+            <% sum = 0 %>
+            <% average = 0 %>
+            <% advisor.reviews.each do |review| %>
+              <% sum += review.rating %>
+              <% occurrences = advisor.reviews.count %>
+              <% average = sum.to_f/occurrences.to_f %>
+            <% end %>
+            <%= average %> <i class="fas fa-star"></i>
+          </p>
         </div>
       </div>
     <% end %>
   <% end %>
-  </div>
 </div>
