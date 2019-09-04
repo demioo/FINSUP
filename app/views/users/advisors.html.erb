@@ -1,5 +1,6 @@
 
   <h1 class="padding-left padding-bottom">Advisors</h1>
+
   <div class="advisor-index-container">
     <% @advisors.each do |advisor| %>
       <%= link_to show_advisor_user_path(advisor), class: 'advisor-cards' do %>
@@ -40,8 +41,10 @@
         </div>
       <% end %>
     <% end %>
+    <span class="cedric-span"></span>
+    <span class="random-container"></span>
+    <span class="random-span"></span>
   </div>
-  <span class="cedric-span"></span>
-  <span class="random-container"></span>
-  <span class="random-span"></span>
+
+
 
