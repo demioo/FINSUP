@@ -1,33 +1,47 @@
-<div class="my-container">
-  <h1>Advisors</h1>
-  <div class="wrapper">
-  <% @advisors.each do |advisor| %>
-    <div class="tweet-cards">
-      <div class="card-top">
-      </div>
-      <div class="profile-pic">
-        <%= cl_image_tag advisor.photo, height: 1000, crop: :fill %>
-      </div>
-      <div class="card-bottom">
-        <p id="name">
-          <%= link_to advisor.first_name.capitalize, show_advisor_user_path(advisor) %>
-        </p>
-        <div class="tweet">
-          <p>Specialty: <strong><%= 'Saving' if advisor.saving %> <%= 'Budgeting' if advisor.budgeting %> <%= 'Bill Paying' if advisor.bill_paying %></strong> </p>
-          <h5 id="date">  Response Time: <strong><%= advisor.response_time %>h</strong></h5>
-          <p>
-            <% sum = 0 %>
-            <% average = 0 %>
-            <% advisor.reviews.each do |review| %>
-              <% sum += review.rating %>
-              <% occurrences = advisor.reviews.count %>
-              <% average = sum.to_f/occurrences.to_f %>
-            <% end %>
-            <%= average %> <i class="fas fa-star"></i>
-          </p>
+
+  <h1 class="padding-left padding-bottom">Advisors</h1>
+  <div class="advisor-index-container">
+    <% @advisors.each do |advisor| %>
+      <%= link_to show_advisor_user_path(advisor), class: 'advisor-cards' do %>
+        <div class="tweet-cards">
+          <div class="index-profile-pic">
+            <%= cl_image_tag advisor.photo, height: 1000, crop: :fill %>
+          </div>
+          <div class="card-main">
+
+            <p class="card-name">
+              <span class="first-name"><%= advisor.first_name.capitalize %></span>
+              <span class="last-name"><%= advisor.last_name.capitalize unless advisor.last_name.nil? %></span>
+            </p>
+
+            <p class="advisor-details">
+              <span class="detail-names">SPECIALTY:</span>
+              <span class= "detail-content"><%= 'Saving' if advisor.saving %> <%= 'Budgeting' if advisor.budgeting %> <%= 'Bill Paying' if advisor.bill_paying %>
+              </span>
+            </p>
+            <p class="advisor-details">
+              <span class="detail-names">RESPONSE TIME:</span>
+              <span class= "detail-content"><%= advisor.response_time %>h</span>
+            </p>
+          </div>
+
+          <div class="card-rating">
+            <p class="rating-details">
+              <% sum = 0 %>
+              <% average = 0 %>
+              <% advisor.reviews.each do |review| %>
+                <% sum += review.rating %>
+                <% occurrences = advisor.reviews.count %>
+                <% average = sum.to_f/occurrences.to_f %>
+              <% end %>
+              <%= average %> <i class="fas fa-star"></i>
+            </p>
+          </div>
         </div>
-      </div>
-    </div>
-  <% end %>
+      <% end %>
+    <% end %>
   </div>
-</div>
+  <span class="cedric-span"></span>
+  <span class="random-container"></span>
+  <span class="random-span"></span>
+

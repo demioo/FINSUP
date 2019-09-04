@@ -8,33 +8,140 @@
 
 }
 
-.tweet-cards{
-  background-color: #FFFFFF;
-  width:161px;
-  height:161px;
-  margin: auto;
-  border-radius: 2px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+.cedric-span {
+  background-size: cover;
+  background-position: center;
+  min-height: calc(100vh - 77px);
+  position: relative;
+  overflow: hidden;
 
+ &:after {
+    content: '';
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background-color: rgb(253, 229, 229);
+    bottom: -300px;
+    left: -40px;
+    z-index: 0;
+  }
+}
+
+.advisor-index-container {
+  padding-left: 20px;
+}
+
+.random-container {
+  background-size: cover;
+  background-position: center;
+  min-height: 100%;
+  position: relative;
+  overflow: hidden;
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: rgb(254, 247, 228);
+    bottom: -200px;
+    left: 160px;
+    z-index: 0;
+  }
+}
+
+.random-span {
+  background-size: cover;
+  background-position: center;
+  min-height: 100%;
+  position: relative;
+  overflow: hidden;
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: rgb(250, 239, 232);
+    bottom: -300px;
+    left: 300px;
+    z-index: 0;
+  }
+}
+
+.tweet-cards{
+  display: flex;
+  background-color: white;
+  width: 95%;
+  height: 120px;
+  border-bottom: 1px solid rgb(230, 230, 230);
+  margin-bottom: 15px;
 }
 
 .tweet-cards .card-top{
-  border-bottom: 4px solid #fc7100;
+  border-bottom: 4px solid red;
   border-radius: 2px 2px 0px 0px;
 }
 
-.tweet-cards .profile-pic{
-  height:45px;
+.index-profile-pic {
+  width: 120px;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
 }
 
-.tweet-cards .profile-pic img{
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  position: relative;
-  margin: -52px 0 0 6px;
-  border: 4px solid white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+.card-main {
+  padding-top: 6px;
+  flex-grow: 1;
+}
+
+.card-rating {
+  padding-top: 6px;
+  width: 50px;
+}
+
+.advisor-details {
+  margin-bottom: 0px;
+}
+
+.detail-names {
+  font-size: 12px;
+  color: $cedric-gray;
+}
+
+.detail-content {
+  color: black;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.card-name {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.first-name {
+  color: $cedric-orange;
+}
+
+.last-name {
+  color: $cedric-gray;
+}
+
+.rating-details {
+  color: black;
+}
+
+.tweet-cards .index-profile-pic img{
+  height: 100px;
+  width: 100px;
+  border: 2px solid #D39897;
+  border-radius: 6px;
 }
 
 p#name a{
