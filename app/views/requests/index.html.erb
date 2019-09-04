@@ -8,8 +8,10 @@
         <div class="dashboard-content">
           <p><strong>Thank you for submitting your form for</strong></p>
           <h4 style="color: #FE6600; text-align: center"><%= r.specialty unless r.specialty.nil? %></h4>
-          <%= link_to 'Chat', chat_request_path(r), class: 'btn btn-danger btn-md' %>
-          <%= link_to 'Leave a Review', show_advisor_user_path(r.advisor, r_id: r.id), class: 'btn btn-danger btn-md'  %>
+            <div class="flexbox">
+              <%= link_to 'Chat', chat_request_path(r), class: 'btn btn-danger btn-md' %>
+              <%= link_to 'Leave a Review', show_advisor_user_path(r.advisor, r_id: r.id), class: 'btn btn-danger btn-md'  %>
+            </div>
         </div>
       </div>
       <% end %>
