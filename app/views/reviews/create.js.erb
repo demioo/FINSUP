@@ -13,9 +13,9 @@ function removeForm() {
   newReviewForm .remove();
 }
 
-function changeText(innerHTML) {
+function changeText() {
   const textToChange = document.getElementById('form-head');
-  textToChange.innerHTML = `${innerHTML}'s Reviews`;
+  textToChange.style.display = 'none';
 }
 
  function showReviews() {
@@ -31,6 +31,6 @@ function changeText(innerHTML) {
 <% else %>
   addReview('<%= j render "reviews/show", review: @review %>');
   removeForm();
-  changeText('<%= @advisor.first_name.capitalize%>');
+  changeText();
   showReviews();
 <% end %>

@@ -10,72 +10,110 @@
       </div>
 
       <div class="basic-info">
-        <h3 ><%= @advisor.first_name.capitalize %> <%= @advisor.last_name.capitalize unless  @advisor.last_name.capitalize.nil? %></h3>
-        <p class="no-margin">SPECIALTY: <strong> <%= 'Saving' if @advisor.saving %> <%= 'Budgeting' if @advisor.budgeting %> <%= 'Bill Paying' if @advisor.bill_paying %> </strong></p>
-        <p class="no-margin">RESPONSE TIME: <strong> <%= @advisor.response_time %> Hours </strong></p>
+        <span class="first-name-show"> <%= @advisor.first_name.capitalize %> </span>
+        <span class="last-name-show">
+          <%= @advisor.last_name.capitalize unless  @advisor.last_name.capitalize.nil? %>
+        </span>
+
+        <p class="no-margin">
+          <span class="detail-names">SPECIALTY:</span>
+          <span class= "detail-content"><%= 'Saving' if @advisor.saving %> <%= 'Budgeting' if @advisor.budgeting %> <%= 'Bill Paying' if @advisor.bill_paying %>
+          </span>
+        </p>
+        <p class="no-margin">
+          <span class="detail-names">RESPONSE TIME:</span>
+          <span class= "detail-content"><%= @advisor.response_time %> Hours</span>
+        </p>
         <p class="no-margin"></p>
       </div>
     </div>
     <div class="profile">
-      <p>RATING </p>
-      <p> <strong><%= @average %> <i class="fas fa-star"></i> </strong></p>
+      <p class="show-head">RATING </p>
+      <p class="detail-content"><%= @average %> <i class="fas fa-star"></i></p>
 
-      <p> TOTAL REQUESTS </p>
-      <p><strong><%= Request.where(advisor: @advisor).count %> </strong> </p>
-      <p>BIO</p>
-      <div class="bio">
-        <p><%= @advisor.bio %> </p>
-      </div>
+      <p class="show-head"> TOTAL REQUESTS </p>
+      <p class="detail-content"><%= Request.where(advisor: @advisor).count %></p>
+
+      <p class="show-head">BIO</p>
+      <p class="bio bigger-margin-bottom"><%= @advisor.bio %> </p>
 
       <div id="reviews">
-        <h3> REVIEWS</h3>
+        <p class="show-head no-margin"> REVIEWS</p>
         <% if @request.id.nil? %>
           <div id="all-reviews">
             <% @advisor.reviews.each do |review| %>
-              <div class="col-12 margin-bottom review-info">
+              <div class="review-info">
                 <div class="reviewer">
-                  <p class="small-margin-bottom"> <%= review.client.first_name %> </p>
-                </div>
-                  <div class="review-body">
-                    <p><%= review.rating.times do %>
+                  <div class="small-margin-bottom first-name">
+                    <span class="first-name margin-right">
+                      <%= review.client.first_name.capitalize %>
+                    </span>
+
+                    <span class="last-name">
+                      <%= review.client.last_name.capitalize unless review.client.last_name.nil? %>
+                    </span>
+                  </div>
+
+
+                  <span>
+                    <p>
+                      <% review.rating.times do %>
                       <i class="fas fa-star"></i>
                       <% end %>
                     </p>
-                    <p> <%= review.content %> </p>
+                  </span>
+
+                </div>
+
+                  <div class="review-body">
+                    <p class="review-content"> <%= review.content %> </p>
                   </div>
               </div>
             <% end %>
-            <h6>Make a request with <%= @advisor.first_name.capitalize %> to leave a review </h6>
+            <p>Make a request with <%= @advisor.first_name.capitalize %> to leave a review </p>
           </div>
 
         <% elsif @request.review.blank? && params[:r_id] %>
-          <h4 id="form-head">Please leave a review for your request with <%= @advisor.first_name.capitalize %></h4>
+          <p class="detail-content" id="form-head">Please leave a review for your request with <%= @advisor.first_name.capitalize %></p>
           <%= render 'reviews/form', advisor: @advisor, review: @review, r_id: params[:r_id] %>
         <% else %>
           <div id="all-reviews">
-            <h3 class="margin-bottom"><%= @advisor.first_name.capitalize %>'s Reviews</h3>
             <% @advisor.reviews.each do |review| %>
-              <div class="col-12 margin-bottom review-info">
+              <div class="review-info">
                 <div class="reviewer">
-                  <p class="small-margin-bottom"> <%= review.client.first_name %> </p>
-                </div>
-                  <div class="review-body">
+                  <div class="small-margin-bottom first-name">
+                    <span class="first-name margin-right">
+                      <%= review.client.first_name.capitalize %>
+                    </span>
+
+                    <span class="last-name">
+                      <%= review.client.last_name.capitalize unless review.client.last_name.nil? %>
+                    </span>
+                  </div>
+
+
+                  <span>
                     <p>
-                      <%= review.rating.times do %>
+                      <% review.rating.times do %>
                       <i class="fas fa-star"></i>
                       <% end %>
                     </p>
-                    <p> <%= review.content %> </p>
+                  </span>
+
+                </div>
+
+                  <div class="review-body">
+                    <p class="review-content"> <%= review.content %> </p>
                   </div>
               </div>
             <% end %>
          </div>
         <% end %>
+      </div>
         <%= simple_form_for @request, method: :post, url: requests_path do |f| %>
         <%= f.input :advisor_id, as: :hidden, input_html: { value: @advisor.id }  %>
-        <%= f.submit 'BOOK ME', class: "btn btn-danger btn-md btn-submit", data: {disable_with: "<i class='fas fa-spinner'></i>done".html_safe } %>
-      <% end %>
-      </div>
+        <%= f.submit 'BOOK ME', class: "btn btn-danger btn-md btn-submit" %>
+        <% end %>
     </div>
   </div>
 

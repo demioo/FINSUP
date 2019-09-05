@@ -1,14 +1,29 @@
 <% @advisor.reviews.each do |review| %>
-  <div class="col-12 margin-bottom review-info">
+  <div class="review-info">
     <div class="reviewer">
-      <p class="small-margin-bottom"> <%= review.client.first_name %> </p>
-    </div>
-      <div class="review-body">
-        <p><%= review.rating.times do %>
+      <div class="small-margin-bottom first-name">
+        <span class="first-name margin-right">
+          <%= review.client.first_name.capitalize %>
+        </span>
+
+        <span class="last-name">
+          <%= review.client.last_name.capitalize unless review.client.last_name.nil? %>
+        </span>
+      </div>
+
+
+      <span>
+        <p>
+          <% review.rating.times do %>
           <i class="fas fa-star"></i>
           <% end %>
         </p>
-        <p> <%= review.content %> </p>
+      </span>
+
+    </div>
+
+      <div class="review-body">
+        <p class="review-content"> <%= review.content %> </p>
       </div>
   </div>
 <% end %>

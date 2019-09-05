@@ -9,7 +9,12 @@ class UsersController < ApplicationController
                                   .where.not(bio: nil)
 
     specialty = session[:request]['specialty'] unless session[:request].nil? || session[:request]['specialty'].nil?
-    if specialty
+
+    if specialty == 'bill paying'
+      @advisors = @advisors.select do |advisor|
+        advisor.send('bill_paying')
+      end
+    elsif specialty
       @advisors = @advisors.select do |advisor|
         advisor.send(specialty)
       end
@@ -28,7 +33,8 @@ class UsersController < ApplicationController
     end
     @advisor = User.find(params[:id])
     @review = Review.new
-    # raise
+
+    average_rating
   end
 
   def edit
@@ -59,5 +65,15 @@ class UsersController < ApplicationController
 
   def authorize_pundit
     authorize User.new
+  end
+
+  def average_rating
+    sum = 0
+    @average = 0
+    @advisor.reviews.each do |review|
+      sum += review.rating
+      occurrences = @advisor.reviews.count
+      @average = sum.to_f / occurrences
+    end
   end
 end
