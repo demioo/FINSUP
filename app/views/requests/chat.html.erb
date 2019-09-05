@@ -1,45 +1,88 @@
-<!---
-
-<% @request.responses.each do |response| %>
-  <% if response.sender.role == 'advisor' %>
-   <div class="d-flex">
-     <div class="advisor-message">
-       <%= response.content %>
-     </div>
+<% if current_user.role == 'client' %>
+ <div class="chat-top">
+   <div class="chat-profile-pic">
+     <%= cl_image_tag @request.advisor.photo, height: 1000, crop: :fill %>
    </div>
-  <% else %>
-   <div class="d-flex justify-content-end">
-     <div class ="client-message">
-       <%= response.content %>
-     </div>
-   </div>
-  <% end %>
+   <p class="chat-profile-name"><%= @request.advisor.first_name %> <%= @request.advisor.last_name %></p>
+ </div>
+<% else %>
+ <div class="chat-top">
+  <div class="chat-profile-pic">
+    <%= cl_image_tag @request.client.photo, height: 1000, crop: :fill %>
+  </div>
+   <p class="chat-profile-name"><%= @request.client.first_name %> <%= @request.client.last_name %></p>
+ </div>
 <% end %>
 
 
-<%= simple_form_for :response, url: request_responses_path(@request), method: :post do |f| %>
-  <%= f.input :content, label: false, placeholder: 'Type here' %>
-<% end %>
- --->
-
-<h1>Chat</h1>
-<div>
-  <%= simple_form_for :response, url: request_responses_path(@request) do |form| %>
-    <%= form.input :content, label: false, placeholder: 'Type here' %>
-    <%= form.submit %>
-  <% end %>
-</div>
-<div id="message_section">
-  <h2>Messages</h2>
+<div class="chat-container" id="message_section">
   <% @responses.each do |response| %>
-    <p><%= response.content %></p>
+    <% if response.sender.role == 'advisor' %>
+      <div class="d-flex">
+        <div class="advisor-message chat-margin-right">
+          <div class="chat-text">
+            <%= response.content %>
+          </div>
+          <div class="message-time">
+            <%= response.created_at.strftime('%l:%M %p') %>
+          </div>
+        </div>
+      </div>
+      <% else %>
+        <div class="d-flex justify-content-end">
+          <div class ="client-message chat-margin-left">
+            <div class="chat-text">
+              <%= response.content %>
+            </div>
+            <div class="message-time">
+              <%= response.created_at.strftime('%l:%M %p') %>
+            </div>
+          </div>
+        </div>
+      <% end %>
   <% end %>
   <script>
       var channel = pusher.subscribe('response-channel');
       channel.bind('new-response', function(data) {
           let response = data.response;
           var div = document.getElementById('message_section');
-          div.innerHTML += `<p> ${response} </p>`;
+          if (data.advisor) {
+            div.innerHTML += `
+              <div class="d-flex">
+                <div class="advisor-message chat-margin-right">
+                  <div class="chat-text">
+                    ${response}
+                  </div>
+                  <div class="message-time">
+                    ${data.created_at}
+                  </div>
+                </div>
+              </div>
+            `
+          } else {
+            div.innerHTML += `
+              <div class="d-flex justify-content-end">
+                <div class ="client-message chat-margin-left">
+                  <div class="chat-text">
+                    ${response}
+                  </div>
+                  <div class="message-time">
+                    ${data.created_at}
+                  </div>
+                </div>
+              </div>
+            `
+          }
+          let messages = div.querySelectorAll('.d-flex');
+          let lastMessage = messages[messages.length - 1];
+          if (lastMessage) {
+            lastMessage.scrollIntoView();
+          }
+          document.getElementById('response_content').value = '';
       });
   </script>
 </div>
+
+<%= simple_form_for :response, url: request_responses_path(@request) do |form| %>
+  <%= form.input :content, label: false, placeholder: 'Type here', input_html: { class: "chat-input" } %>
+<% end %>
