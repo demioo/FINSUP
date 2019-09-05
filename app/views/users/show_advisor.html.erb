@@ -112,7 +112,7 @@
       </div>
         <%= simple_form_for @request, method: :post, url: requests_path do |f| %>
         <%= f.input :advisor_id, as: :hidden, input_html: { value: @advisor.id }  %>
-        <%= f.submit 'BOOK ME', class: "btn btn-danger btn-md btn-submit", data: {disable_with: "<i class='fas fa-spinner'></i>done".html_safe } %>
+        <%= f.submit 'BOOK ME', class: "btn btn-danger btn-md btn-submit" %>
         <% end %>
     </div>
   </div>
