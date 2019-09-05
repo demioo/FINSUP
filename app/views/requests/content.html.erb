@@ -1,14 +1,12 @@
 <div class="background-container">
-  <div class="budget-form-background">
-    <% if session[:request]['specialty'] == 'budgeting' %>
-      <%=  render "budget" %>
-    <% elsif session[:request]['specialty'] == 'bill paying' %>
-      <%=  render "bill" %>
-    <% elsif session[:request]['specialty'] == 'saving' %>
-      <%=  render "saving" %>
-    <% else %>
-      <%= link_to 'Start now', new_request_path %>
-    <% end %>
-  </div>
+  <% if session[:request]['specialty'] == 'budgeting' %>
+    <%=  render "budget" %>
+  <% elsif session[:request]['specialty'] == 'bill paying' %>
+    <%=  render "bill" %>
+  <% elsif session[:request]['specialty'] == 'saving' %>
+    <%=  render "saving" %>
+  <% else %>
+    <%= link_to 'Start now', new_request_path %>
+  <% end %>
 </div>
 
