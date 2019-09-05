@@ -1,11 +1,20 @@
 .profile-pic img{
   position: relative;
-  margin: -6px 0 0 6px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   height: 110px;
   width: 110px;
   border: 2px solid #D39897;
   border-radius: 6px;
+}
+
+.first-name-show {
+  color: $cedric-orange;
+  font-size: 22px
+}
+
+.last-name-show {
+  color: $cedric-gray;
+  font-size: 22px;
 }
 
 .no-margin {
@@ -18,11 +27,12 @@
   justify-content: space-around;
   padding-top: 25px;
   padding-bottom: 20px;
+  margin-left: -45px;
 }
 
 .basic-info{
-  // margin-left: 45px;
-  padding: 15px;
+  // padding: 15px;
+  margin-left: -60px;
 }
 
 .availability{
@@ -32,12 +42,23 @@
   margin-left: 10px;
 }
 
+.show-head {
+  font-size: 12px;
+}
+
 .btn-submit {
   width: 97% !important;
 }
 
-#reviews{
-  // margin-left: 5px;
+.reviewer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.review-info {
+  background-color: transparent;
+  padding: 10px;
+  border-bottom: 1px solid rgb(230, 230, 230);
 }
 
 .basic-info h3{
@@ -54,8 +75,23 @@
 #all-reviews h6{
 text-decoration: underline;
 }
-.bio p{
+
+.bio {
+  font-size: 16px;
   color: #494949;
+}
+
+.review-content {
+  font-size: 14px;
+  color: black;
+}
+
+.margin-right {
+  margin-right: 4px;
+}
+
+.bigger-margin-bottom {
+  margin-bottom: 20px;
 }
 
 .btn-orange{

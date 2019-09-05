@@ -1,29 +1,31 @@
 <div class="background-container">
-  <div class="dashboard-background">
-    <div class="dash-note">
-      <p>Here's a history of all your requests!  We hope they help you earn your financial wings 💸</p>
-      </div>
-      <div class="index-container">
-        <% @requests.each do |r| %>
-        <div class="card_requests">
-          <div class="square_image" style=" background-image: url(<%= cl_image_path r.advisor.photo, height: 1000, crop: :fill  %>)">
-          </div>
-          <div class="contents">
-            <div class="name_holder">
-              <span id="advisor_t">Advisor: </span><h4 class="card_header" style="text-align: left"> <%= r.advisor.first_name.capitalize %> <%= r.advisor.last_name.capitalize unless r.advisor.last_name.nil? %>
-              </h4>
-          </div>
-              <div class="dashboard_content">
-                <p>Thank you for submitting your form for: <span><%= r.specialty unless r.specialty.nil? %></span>   </p>
-              </div>
-              <div class="flexbox_btn">
-                <%= link_to 'Chat', chat_request_path(r), class: 'btn_dash' %>
-                <%= link_to 'Leave a Review', show_advisor_user_path(r.advisor, r_id: r.id), class: 'btn_dash'  %>
-              </div>
+  <div class="dash-note">
+    <p>Here's a history of all your requests!  We hope they help you find your financial wings 💸</p>
+    </div>
+    <div class="index-container">
+      <% @requests.each do |r| %>
+      <div class="card_requests">
+        <div class="profile-pic">
+          <%= cl_image_tag r.advisor.photo, height: 1000, crop: :fill %>
+        </div>
+        <div class="contents">
+          <div class="name_holder">
+            <span id="advisor_t">Advisor: </span><h4 class="card_header" style="text-align: left"> <%= r.advisor.first_name.capitalize %> <%= r.advisor.last_name.capitalize unless r.advisor.last_name.nil? %>
+            </h4>
+        </div>
+            <div class="dashboard_content">
+              <p class="medium-margin-bottom">Thank you for submitting your form for: <span><%= r.specialty.capitalize unless r.specialty.nil? %></span>   </p>
             </div>
-           </div>
-        <% end %>
-      </div>
-  </div>
+            <div class="flexbox_btn">
+              <%= link_to 'Chat', chat_request_path(r), class: 'btn_dash' %>
+              <%= link_to 'Leave a Review', show_advisor_user_path(r.advisor, r_id: r.id), class: 'btn_dash'  %>
+            </div>
+          </div>
+         </div>
+      <% end %>
+    </div>
+    <span class="cedric-span"></span>
+    <span class="random-container"></span>
+    <span class="random-span"></span>
 </div>
 
