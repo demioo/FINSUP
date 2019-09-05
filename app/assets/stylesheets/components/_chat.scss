@@ -1,17 +1,83 @@
 .advisor-message {
-  margin: 16px;
-  background-color: rgba(118, 181, 50, 1);
+  margin: 4px;
+  background-color: rgba(255, 170, 43, 1);
+  padding: 8px 12px;
+  border-radius: 6px;
+  position: relative;
+}
+
+.chat-text {
   color: white;
-  padding: 16px 32px;
-  border-radius: 3px;
-  font-weight: bold;
+  font-size: 13px;
 }
 
 .client-message {
-  margin: 16px;
-  background-color: rgba(96, 180, 214, 1);
+  margin: 4px;
+  background-color: rgba(180, 180, 180, 1);
   color: white;
-  padding: 16px 32px;
-  border-radius: 3px;
-  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  position: relative;
 }
+
+.chat-top {
+  display: flex;
+  border-bottom: 1px solid rgba(190, 190, 190, 0.85);
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.chat-profile-name {
+  font-weight: bold;
+  margin: 0;
+}
+
+.chat-input {
+  position: fixed;
+  bottom: 0;
+}
+
+.chat-margin-right {
+  margin-right: 48px;
+  padding-bottom: 10px;
+}
+
+.chat-margin-left {
+  margin-left: 48px;
+  padding-bottom: 10px;
+}
+
+.chat-container {
+  padding: 10px 10px 40px 10px;
+}
+
+.message-time {
+  font-size: 10px;
+  font-weight: lighter;
+  text-align: right;
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

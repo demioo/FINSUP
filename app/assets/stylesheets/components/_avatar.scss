@@ -19,3 +19,11 @@
   border: white 1px solid;
 }
 
+.chat-profile-pic img{
+  height: 40px;
+  width: 40px;
+  border: 2px solid #D39897;
+  border-radius: 3px;
+  margin: 10px 20px;
+  object-fit: cover;
+}
