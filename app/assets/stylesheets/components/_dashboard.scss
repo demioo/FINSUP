@@ -36,13 +36,14 @@
 .card_header {
   margin: 0;
   font-size: 18px;
-
+  color: #ef6436;
 }
 
 #advisor_t {
   font-weight: lighter !important;
   font-size: 16px;
   margin-right: 4px;
+  color: dimgray;
 }
 .contents {
   width: 70%;
@@ -62,15 +63,26 @@
   font-size: 15px;
   color: white ;
   padding: 5px 10px;
-  background-color: #fe6600;
+  background-color: #ef6436;
   border-radius: 2px;
+}
+
+a.btn_dash {
+  text-decoration: none;
+  color: white;
 }
 
 
 .flexbox_btn {
-margin-left: 10px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .medium-margin-bottom {
   margin-bottom: 12px;
+}
+
+.dashboard-text {
+  color: black;
 }
