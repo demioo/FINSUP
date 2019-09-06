@@ -38,7 +38,7 @@
       <p class="bio bigger-margin-bottom"><%= @advisor.bio %> </p>
 
       <div id="reviews">
-        <p class="show-head no-margin"> REVIEWS</p>
+        <p class="show-head small-margin-bottom"> REVIEWS</p>
         <% if @request.id.nil? %>
           <div id="all-reviews">
             <% @advisor.reviews.each do |review| %>
@@ -112,7 +112,7 @@
       </div>
         <%= simple_form_for @request, method: :post, url: requests_path do |f| %>
         <%= f.input :advisor_id, as: :hidden, input_html: { value: @advisor.id }  %>
-        <%= f.submit 'BOOK ME', class: "btn btn-danger btn-md btn-submit" %>
+        <%= f.submit "Book #{@advisor.first_name.capitalize}", class: "btn btn-md btn-submit sub-button" %>
         <% end %>
     </div>
   </div>
