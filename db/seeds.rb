@@ -21,8 +21,6 @@ User.create!(first_name: 'Melissa', last_name: 'Connors', email: 'melissa@gmail.
 
 User.create!(first_name: 'Francesca', last_name: 'Vago', email: 'francesca@gmail.com', password: '123456', role: 'advisor', response_time: '10', budgeting: true, bio: 'I am an experienced certified financial advisor with 5 years of experience serving my local community and their budgeting needs.  I pride myself on developing useful and efficient plans for families, so they can have a solid financial foundation.', remote_photo_url: 'https://res.cloudinary.com/dzy7p5au0/image/upload/v1567681649/Francesca_ybf5u8.jpg')
 
-User.create!(first_name: 'Demi', last_name: 'Ogun', email: 'demi@gmail.com', password: '123456', role: 'advisor', response_time: '15', budgeting: true, bio: 'Hello, I provide independent financial advice on all aspects of financial planning, with a focus on creating savings plans for families and individuals. Financial planning to me is all about building long term relationships and whilst money may not be the most important thing in life, it is significant, and it plays a central part in the lifestyle we enjoy and the security we feel.', remote_photo_url: 'https://res.cloudinary.com/dzy7p5au0/image/upload/v1567681581/Demi_wg6guc.png')
-
 User.create!(first_name: 'Julien', last_name: 'Pel', email: 'julien@gmail.com', password: '123456', role: 'advisor', response_time: '5', budgeting: true, bio: 'I am a Junior Financial Advisor with a lot of crypto experience. Give me your money and I will teach you everything there is to know about blockchain, Bitcoin, and how to make mad gains.', remote_photo_url: 'https://res.cloudinary.com/dzy7p5au0/image/upload/v1567681585/Julien_yztksg.jpg')
 
 puts "Finished creating users"
